@@ -1,8 +1,6 @@
-# ESSLLI2015
+# Monads and Natural Language
 
-Monads and Natural Language
-
-ESSLLI Barcelona
+## ESSLLI Barcelona
 
 17:00--18:30 M-F, 3-7 August 2015
 
