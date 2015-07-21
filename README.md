@@ -1,14 +1,12 @@
-# ESSLLI2015
-
-Monads and Natural Language
+# Monads and Natural Language
 
 ESSLLI Barcelona
-
 17:00--18:30 M-F, 3-7 August 2015
 
-Instructors: Chris Barker <chris.barker@nyu.edu> and Dylan Bumford
-<dbumford@gmail.com>
+Instructors: Chris Barker <chris.barker@nyu.edu> and Dylan Bumford <dbumford@gmail.com>,
+*New York University, Department of Linguistics*
 
+### Course description:
 
 Monads are a concept from the theory of programming
 languages that allows modular separation of main effect from side
@@ -16,11 +14,11 @@ effect.  For instance, if the main effect is arithmetic computation,
 the side effect might be reading the value of a variable from a store
 (a Reader monad), or sending a value to the print queue (a Writer
 monad), or changing the value of a variable (a State monad).  Each of
-these side effects can be added or subtracted at will without
+these side effects can be added or removed at will without
 disturbing the main computation.
 
 It is now well-established that natural languages expressions can be
-viewed as having a main ("at-issue") effect and side effects.  The
+viewed as having a main (``at-issue'') effect and side effects.  The
 goal of this course is to explore how the technique of monadic
 programming can provide insight into semantic composition in natural
 language.  Examples explored in detail include intensionality as a
@@ -37,7 +35,7 @@ developing progressively more complex concrete fragments of natural
 language in Haskell.  The Haskell language (named for Haskell Curry)
 provides extensive built-in support for monads.  The fragments will be
 applied to progressively more challenging data sets in natural
-language.
+language.  
 
 The level of the course will be appropriate for any student who either
 has experience with a functional programming langauge (Haskell, OCaml,
@@ -56,14 +54,55 @@ else to be a way for experienced natural language semanticists to
 appreciate the value of functional programming techniques for gaining
 new insights into semantic composition.
 
-Tentative schedule:
-
-* Day 1. Monads, the monad laws, Haskell; survey of applications in linguistics [wikis]
-* Day 2. Reader monad for intensionality [Winter and Ben-avi], writer monad for expressives [Giorgolo and Asudeh]
-* Day 3. State monad for binding, donkey anaphora, ellipsis [Charlow 2014]
-* Day 4. Set monad for indefinites; monad transformers [Charlow 2014]
-* Day 5. Continuation monad for scope-taking; the mother of all monads [Barker and Shan 2014]
-
 There will be simple programming excerises, as well as readings from
 the linguistics literature.  Unger and van Eijck provides useful
 background on Haskell.
+
+
+# Tentative schedule:
+
+* Day 1:
+    * Introduction
+        * Computational goals served by monads: structured computation
+        * Linguistic goals served by monads: multi-dimensional meaning composition
+        * Survey of applications in linguistics
+    * Basics
+        * Types and Kleisli arrows
+        * Monad laws
+    * First example, the Maybe monad: division by zero, presupposition projection
+    * Haskell orientation
+
+[put in sidebar: wiki, Hankin, Rooth, Shan, Wadler]
+
+* Day 2:
+    * Reader monad
+        * Intensionality
+        * Binding
+        * Indexicals
+    * Writer monad
+        * Expressives and appositives
+        * Postsuppositions
+    * Re-engineering Groenendijk, Stokhof, and Veltman's 1996 fragment (part I of II)
+
+[Winter and Ben-avi, Giorgolo and Asudeh, GSV]
+
+* Day 3:
+    * Re-engineering GSV (part II of II)
+    * State monad
+        * Binding
+        * Donkeys
+        * Ellipsis
+
+[Bumford S&P, Charlow]
+
+* Day 4:
+    * Combinations of monads
+        * Monad trasformers
+        * Charlow 2015
+
+* Day 5:
+    * Continuations and scope
+    * Monads and category theory
+    * Comonads
+
+[Barker and Shan, Bekki et al.]
