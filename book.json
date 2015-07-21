@@ -1,3 +1,5 @@
 {
-    "plugins": ["katex","expandable-chapters"]
+    "plugins": ["katex","expandable-chapters"],
+    "gitbook": "2.1.0",
+    "title": "Monads and Natural Language Semantics"
 }
