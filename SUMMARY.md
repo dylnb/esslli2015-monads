@@ -1,5 +1,6 @@
 # Summary
 
+* [Monads and Natural Language](README.md)
 * [Introduction](intro/README.md)
 * [Lambdas, Types, Haskell](types/README.md)
 * [Monads, Getting Started](starting/README.md)
