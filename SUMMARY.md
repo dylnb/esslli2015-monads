@@ -2,7 +2,7 @@
 
 * [Monads and Natural Language](README.md)
 * [Introduction](intro/README.md)
-* [Lambdas, Types, Haskell](types/README.md)
+* [Lambdas, Types, Haskell](types/types.md)
 * [Monads, Getting Started](starting/README.md)
     * [Effects](starting/effects.md)
     * [Laws](starting/laws.md)
