@@ -70,12 +70,11 @@ background on Haskell.
         * Types and Kleisli arrows
         * Monad laws
     * First example, the Maybe monad: division by zero, presupposition projection
-    * Haskell orientation
 
 * Day 2:
     * Reader monad
-        * Intensionality
         * Indexicals
+        * Intensionality
     * Writer monad
         * Expressives and appositives
         * Postsuppositions
