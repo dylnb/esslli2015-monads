@@ -1,11 +1,9 @@
 # Introduction
 
-Chapter preface.
+* Monads are a technique from functional programming for articulating
+  computations into layers
 
-<div style="color:red">
-  will this work
-</div>
-
-When $$a \ne 0$$, there are two solutions to $$(ax^2 + bx + c = 0)$$ and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-
+For instance, imagine you are building a calculator program that
+  evaluates artithmetic expressions.  You write code that performs
+  addition, subtraction, and multiplication, so that you can evaluate
+  expressions such as "(* 2 (+ (- 4 2) 3))".  

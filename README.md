@@ -72,19 +72,14 @@ background on Haskell.
     * First example, the Maybe monad: division by zero, presupposition projection
     * Haskell orientation
 
-[put in sidebar: wiki, Hankin, Rooth, Shan, Wadler]
-
 * Day 2:
     * Reader monad
         * Intensionality
-        * Binding
         * Indexicals
     * Writer monad
         * Expressives and appositives
         * Postsuppositions
     * Re-engineering Groenendijk, Stokhof, and Veltman's 1996 fragment (part I of II)
-
-[Winter and Ben-avi, Giorgolo and Asudeh, GSV]
 
 * Day 3:
     * Re-engineering GSV (part II of II)
@@ -92,8 +87,6 @@ background on Haskell.
         * Binding
         * Donkeys
         * Ellipsis
-
-[Bumford S&P, Charlow]
 
 * Day 4:
     * Combinations of monads
@@ -104,5 +97,3 @@ background on Haskell.
     * Continuations and scope
     * Monads and category theory
     * Comonads
-
-[Barker and Shan, Bekki et al.]
