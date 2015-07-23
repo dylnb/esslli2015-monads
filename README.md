@@ -6,7 +6,7 @@ ESSLLI Barcelona
 Instructors: Chris Barker <chris.barker@nyu.edu> and Dylan Bumford <dbumford@gmail.com>,
 *New York University, Department of Linguistics*
 
-### Course description:
+## Course description:
 
 Monads are a concept from the theory of programming
 languages that allows modular separation of main effect from side
@@ -18,7 +18,7 @@ these side effects can be added or removed at will without
 disturbing the main computation.
 
 It is now well-established that natural languages expressions can be
-viewed as having a main (``at-issue'') effect and side effects.  The
+viewed as having a main ("at-issue") effect and side effects.  The
 goal of this course is to explore how the technique of monadic
 programming can provide insight into semantic composition in natural
 language.  Examples explored in detail include intensionality as a
@@ -35,10 +35,10 @@ developing progressively more complex concrete fragments of natural
 language in Haskell.  The Haskell language (named for Haskell Curry)
 provides extensive built-in support for monads.  The fragments will be
 applied to progressively more challenging data sets in natural
-language.  
+language.
 
 The level of the course will be appropriate for any student who either
-has experience with a functional programming langauge (Haskell, OCaml,
+has experience with a functional programming language (Haskell, OCaml,
 Scheme, etc.), or who has experience with formal models of semantic
 composition (Heim and Kratzer, Jacobson, Steedman, Moortgat, etc.)
 The course will not presume previous familiarity with any specific
@@ -54,12 +54,12 @@ else to be a way for experienced natural language semanticists to
 appreciate the value of functional programming techniques for gaining
 new insights into semantic composition.
 
-There will be simple programming excerises, as well as readings from
+There will be simple programming exercises, as well as readings from
 the linguistics literature.  Unger and van Eijck provides useful
 background on Haskell.
 
 
-# Tentative schedule:
+## Tentative schedule:
 
 * Day 1:
     * Introduction
