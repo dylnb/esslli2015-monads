@@ -68,4 +68,43 @@ So the modular techniques developed for functional programming can be
 applied directly to many familiar problems in the interpretation of
 natural language.
 
+Although there is no limit to the variety of monads, several specific
+monads have proven to be useful, and have names:
 
+* Maybe monad (Option monad in O'Caml)
+* Reader monad
+* State monad
+* Writer monad
+* List monad
+* Continuation monad
+
+Here are some of the specific natural language phenomena for which
+monadic treatments have been proposed:
+
+* Intensionality (Shan 2002, Ben-avi and Winter 2009) [Reader monad]:
+  adding a layer in which the values of expressions can depend on the
+  choice of an evaluation parameter (usually, a possible world, or a
+  world and a time)
+
+* Indexicality [Reader monad]
+
+* Binding (Jacobson 1999, Shan 2002, de Groote 2007) [Reader monad,
+  State monad]: adding a layer in which the values of expressions can
+  both depend on previous expressions, and determine subsequent
+  expressions.
+
+* Presupposition failure [Maybe monad]
+
+* Expressives [Writer monad]
+
+* Scope-taking (Barker 2002, Barker and Shan 2014) [Continuation monad]
+
+In addition to all of these considerations, another important aspect
+of monads is that they allow fine-grained control over the order of
+evaluation of expressions.  This has implications in the study of
+natural language for theories of weak crossover, negative polarity
+licensing, and more.
+
+Charlow's 2014 dissertation, which integrates a number of monads into
+a sophisticated medium-coverage grammar will be discussed in some
+detail in the course.
