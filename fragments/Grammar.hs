@@ -1,15 +1,17 @@
-{-# LANGUAGE FlexibleContexts, NoImplicitPrelude #-}
+{-# LANGUAGE FlexibleInstances, FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses, UndecidableInstances #-}
+{-# NoImplicitPrelude #-}
 
 module Grammar where
 
 import Prelude hiding (log)
-import Control.Monad
 import Control.Monad.Identity
+import Control.Monad.List
 import Control.Monad.Reader
 import Control.Monad.Writer
 import Control.Monad.State
 import Control.Monad.RWS
-
+import Control.Monad.Cont
 
 data Entity = John | Mary deriving (Eq, Show)
 data Context = Context {speaker :: Entity, time :: Int}
@@ -29,67 +31,95 @@ john = return John
 mary = return Mary
 
 likes :: Monad m => m (Entity -> Entity -> Bool)
-likes = return (\x y -> x == John && y == Mary)
+likes = return (\x y -> x == John)
 
 defCon :: Context
 defCon = Context {speaker = John, time = 0}
 
 sen1 :: Monad m => m Bool
 sen1 = mary <\> (likes </> john)
--- sen1 :: Identity Bool
--- sen1 :: Maybe Bool
--- sen1 :: [Bool]
--- (sen1 :: Reader Stack Bool) []
+-- runIdentity sen1
+-- runMaybe sen1
+-- runReader sen1 []
 
 log :: (Show a, MonadWriter String m) => m a -> m a
-log m = m >>= (\x -> writer (x, "Log: " ++ show x ++ "; "))
+log m = m >>= (\x -> writer (x, "Logging " ++ show x ++ "; "))
 
 sen2 :: MonadWriter String m => m Bool
 sen2 = log mary <\> (likes </> log john)
--- sen2 :: Writer String Bool
+-- runWriter sen2 
 
 someone :: MonadPlus m => m Entity
 someone = john `mplus` mary
 
 sen3 :: MonadPlus m => m Bool
 sen3 = someone <\> (likes </> john)
--- sen3 :: [Bool]
+-- runListT sen3
 
 sen4 :: (MonadPlus m, MonadWriter String m) => m Bool
 sen4 = log someone <\> (likes </> john)
--- sen4 :: WriterT String [] Bool
+-- runListT (runWriterT sen4)
 
 me :: MonadReader Context m => m Entity
 me = asks speaker
 
 sen5 :: MonadReader Context m => m Bool
 sen5 = mary <\> (likes </> me)
--- (sen4 :: Context -> Bool) defCon
+-- runReader sen5 defCon
 
 pro :: MonadState Stack m => m Entity
 pro = gets head
 
 sen6 :: MonadState Stack m => m Bool
 sen6 = mary <\> (likes </> pro)
--- runState (sen6 :: State Stack Bool) [John]
+-- runState sen6 [John]
 
 push :: MonadState Stack m => m Entity -> m Entity
 push m = m >>= \x -> state (\s -> (x, x:s))
 
 sen7 :: MonadState Stack m => m Bool
 sen7 = push mary <\> (likes </> pro)
--- runState (sen7 :: State Stack Bool) [John]
+-- runState sen7 [John]
 
 sen8 :: (MonadPlus m, MonadState Stack m) => m Bool
 sen8 = push someone <\> (likes </> pro)
--- runStateT (sen8 :: StateT Stack [] Bool) []
+-- runListT (runStateT sen8 [])
 
 sen9 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => m Bool
 sen9 = push someone <\> (likes </> log pro)
--- runWriterT (runStateT (sen9 :: StateT Stack (WriterT String []) Bool) [])
--- runStateT (runWriterT (sen9 :: WriterT String (StateT Stack []) Bool)) []
--- runRWST (sen9 :: RWST Context String Stack [] Bool) defCon []
+-- runListT (runWriterT (runStateT sen9 []))
+-- runListT (runStateT (runWriterT sen9) [])
+-- runListT (runRWST sen9 defCon [])
 
-sen10 :: (MonadPlus m, MonadState Stack m, MonadWriter String m, MonadReader Context m) => m Bool
+sen10 :: (MonadPlus m, MonadRWS Context String Stack m) => m Bool
 sen10 = push someone <\> (likes </> log me)
--- runRWST (sen10 :: RWST Context String Stack [] Bool) defCon []
+-- runListT (runRWST sen10 defCon [])
+
+everyone :: Monad m => ContT Bool m Entity
+everyone = ContT $ \k -> k John `andM` k Mary
+  where andM = liftM2 (&&)
+
+lower :: Monad m => ContT a m a -> m a
+lower t = runContT t return
+
+sen11 :: Monad m => ContT Bool m Bool
+sen11 = mary <\> (likes </> everyone)
+-- runIdentity (lower sen11)
+
+sen12 :: MonadState Stack m => ContT Bool m Bool
+sen12 =  mary <\> (likes </> push everyone)
+-- runState (lower sen12) []
+
+sen13 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
+sen13 = log someone <\> (likes </> push everyone)
+-- runListT (runWriterT (runStateT (lower sen13) []))
+
+
+
+
+instance MonadPlus m => MonadPlus (ContT r m) where
+  mzero = ContT $ \k -> mzero
+  m `mplus` n = ContT $ \k -> runContT m k `mplus` runContT n k
+
+instance MonadWriter w m => MonadWriter w (ContT r m) where
+  tell w = lift (tell w)
