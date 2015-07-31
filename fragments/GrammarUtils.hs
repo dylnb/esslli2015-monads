@@ -7,11 +7,31 @@ import Control.Monad.Writer
 import Control.Monad.Cont
 import Control.Applicative
 
-runList :: [a] -> [a]
+type List a = [a]
+
+runList :: List a -> [a]
 runList = id
 
 runMaybe :: Maybe a -> Maybe a
 runMaybe = id
+
+data Pair a = Pair {runPair :: (a, a)}
+
+instance Show a => Show (Pair a) where
+  show (Pair (x, y)) = "Pair " ++ show (x, y)
+
+instance Functor Pair where
+  fmap f (Pair (x, y)) = Pair (f x, f y)
+
+instance Applicative Pair where
+  pure x = Pair (x, x)
+  (Pair (uf, vf)) <*> (Pair (ux, vx)) = Pair (uf ux, vf vx)
+
+instance Monad Pair where
+  return x = Pair (x, x)
+  (Pair (x, y)) >>= k = Pair (fstP $ k x, sndP $ k y)
+    where fstP (Pair (u, v)) = u
+          sndP (Pair (u, v)) = v
 
 instance Monoid w => Monad ((,) w) where
   return x = (mempty, x)
