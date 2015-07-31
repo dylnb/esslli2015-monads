@@ -1,6 +1,4 @@
-{-# LANGUAGE FlexibleInstances, FlexibleContexts #-}
-{-# LANGUAGE MultiParamTypeClasses, UndecidableInstances #-}
---{-# NoImplicitPrelude #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 module Grammar where
 
@@ -12,6 +10,7 @@ import Control.Monad.Writer
 import Control.Monad.State
 import Control.Monad.RWS
 import Control.Monad.Cont
+import OrphanInstances
 
 data Entity = John | Mary deriving (Eq, Show)
 data Context = Context {speaker :: Entity, time :: Int}
@@ -113,13 +112,3 @@ sen12 =  mary <\> (likes </> push everyone)
 sen13 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
 sen13 = log someone <\> (likes </> push everyone)
 -- runListT (runWriterT (runStateT (lower sen13) []))
-
-
-
-
-instance MonadPlus m => MonadPlus (ContT r m) where
-  mzero = ContT $ \k -> mzero
-  m `mplus` n = ContT $ \k -> runContT m k `mplus` runContT n k
-
-instance MonadWriter w m => MonadWriter w (ContT r m) where
-  tell w = lift (tell w)
