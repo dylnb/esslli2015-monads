@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleInstances, FlexibleContexts #-}
 {-# LANGUAGE MultiParamTypeClasses, UndecidableInstances #-}
-{-# NoImplicitPrelude #-}
+--{-# NoImplicitPrelude #-}
 
 module Grammar where
 
@@ -17,12 +17,12 @@ data Entity = John | Mary deriving (Eq, Show)
 data Context = Context {speaker :: Entity, time :: Int}
 type Stack = [Entity]
 
-
+-- "<\>" is the categorial slash lifted into monad m
 (<\>) :: Monad m => m a -> m (a -> b) -> m b
-mx <\> mf = mx >>= (\x -> mf >>= (\f -> return $ f x))
+mx <\> mf = mx >>= (\x -> mf >>= (\f -> return (f x)))
 
 (</>) :: Monad m => m (a -> b) -> m a -> m b
-mf </> mx = mf >>= (\f -> mx >>= (\x -> return $ f x))
+mf </> mx = mf >>= (\f -> mx >>= (\x -> return (f x)))
 
 
 
