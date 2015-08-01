@@ -69,7 +69,8 @@ background on Haskell.
     * Basics
         * Types and Kleisli arrows
         * Monad laws
-    * First example, the Maybe monad: division by zero, presupposition projection
+    * First example, the List monad: division by zero?, indefinites
+    * Also, the identity monad...
 
 * Day 2:
     * Reader monad
@@ -89,10 +90,12 @@ background on Haskell.
 
 * Day 4:
     * Combinations of monads
+        * Alternatives + assignment sensitivity
+        * monad associativity gives rise to exceptional scope
         * Monad trasformers
         * Charlow 2015
+        * focus: applicatives
 
 * Day 5:
     * Continuations and scope
-    * Monads and category theory
-    * Comonads
+    * Inverse scope

@@ -16,7 +16,7 @@ data Entity = John | Mary deriving (Eq, Show)
 data Context = Context {speaker :: Entity, time :: Int}
 type Stack = [Entity]
 
-
+-- "<\>" is the categorial slash lifted into monad m
 (<\>) :: Monad m => m a -> m (a -> b) -> m b
 mx <\> mf = mx >>= (\x -> mf >>= (\f -> return (f x)))
 
