@@ -67,10 +67,9 @@ background on Haskell.
         * Linguistic goals served by monads: multi-dimensional meaning composition
         * Survey of applications in linguistics
     * Basics
-        * Types and Kleisli arrows
-        * Monad laws
-    * First example, the List monad: division by zero?, indefinites
-    * Also, the identity monad...
+        * Types and type classes
+        * Monads and the monad laws
+    * First example, presupposition failure in the "maybe" monad
 
 * Day 2:
     * Reader monad
@@ -78,24 +77,22 @@ background on Haskell.
         * Intensionality
     * Writer monad
         * Expressives and appositives
-        * Postsuppositions
-    * Re-engineering Groenendijk, Stokhof, and Veltman's 1996 fragment (part I of II)
-
-* Day 3:
-    * Re-engineering GSV (part II of II)
+    * Set monad
+        * Alternative semantics
+        * Focus
     * State monad
         * Binding
-        * Donkeys
-        * Ellipsis
+
+* Day 3:
+    * Groenendijk, Stokhof, and Veltman's 1996 fragment
+    * Re-engineering GSV, monadically
 
 * Day 4:
-    * Combinations of monads
-        * Alternatives + assignment sensitivity
-        * monad associativity gives rise to exceptional scope
-        * Monad trasformers
-        * Charlow 2015
-        * focus: applicatives
+    * Combining effects
+        * Dynamic semantics
+      * Monad transformers
+      * Applicatives
 
 * Day 5:
-    * Continuations and scope
-    * Inverse scope
+    * Continuations for scope
+    * Continuations and monads

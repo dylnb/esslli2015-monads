@@ -34,8 +34,6 @@
 ---
 
 
-# Setting the Stage
-
 * First, notice that there's nothing about this combinator that depends on the
   maybe monad; it is more generally typed
 
@@ -46,8 +44,6 @@
 
 ---
 
-
-# Setting the Stage
 
 * Second, as a special case of this operation, we might want to map function
   application itself over two arguments: the first a monadic function, the
@@ -71,11 +67,9 @@
 ---
 
 
-# Setting the Stage
-
 * So `(</>)` and `(<\>)` give effect-sensitive analogs of the traditional
   categorial forward and backward function application combinators
 
 * And they're monad-neutral! This makes the grammar flexible and modular: any
-  effect for which $\eta$ and $\star$ are defined can be combined using these
+  effect for which $$\eta$$ and $$\star$$ are defined can be combined using these
   applicative operations
