@@ -152,11 +152,11 @@ class Functor m where
   -- being "mappable" is a property of the type constructor, regardless of what
   -- sorts of values it contains
 
-instance Functor (List a) where
+instance Functor List where
   fmap _ Nil = Nil
   fmap f (Cons x xs) = Cons (f x) (fmap f xs)
 
-instance Functor (Pair a) where
+instance Functor Pair where
   fmap (Pair (x, y)) = Pair (f x, f y)
 ```
 
@@ -215,11 +215,11 @@ class Bind m => Monad m where
   (>>=)  :: m a -> (a -> m b) -> m b
   (>>=)  = flip bind
 
-instance Monad (List a) where
-  return x          = Cons x Nil
+instance Monad List where
+  return x = Cons x Nil
 
-instance Monad (Pair a) where
-  return x           = Pair (x, x)
+instance Monad Pair where
+  return x = Pair (x, x)
 ```
 
 
