@@ -3,14 +3,17 @@
 module Grammar where
 
 import Prelude hiding (log)
-import Control.Monad.Identity
+--import Data.Functor.Identity
+import Control.Monad
+import Control.Monad.Trans.Maybe
+import Control.Monad.Trans.Identity
 import Control.Monad.List
 import Control.Monad.Reader
 import Control.Monad.Writer
 import Control.Monad.State
 import Control.Monad.RWS
 import Control.Monad.Cont
-import OrphanInstances
+import GrammarUtils
 
 data Entity = John | Mary deriving (Eq, Show)
 data Context = Context {speaker :: Entity, time :: Int}
