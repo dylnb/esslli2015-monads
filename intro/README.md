@@ -1,32 +1,56 @@
 # Introduction
 
+## Chris Barker (chris.barker@nyu.edu)
+## Dylan Bumford (dbumford@gmail.edu)
+## This course [https://github.com/dylnb/esslli2015-monads](https://github.com/dylnb/esslli2015-monads)
+
+---
+
 * Monads are a technique from functional programming for articulating
   computations into layers
 
-[This discussion inspired by Wadler's "Monads for functional programming".]
+[This discussion inspired by Wadler's "Monads for functional programming".](../Readings/wadler-monads.pdf)
 
-For instance, imagine you are building a calculator program that
+* For instance, imagine you are building a calculator program that
   evaluates artithmetic expressions.  You write code that performs
   addition, subtraction, multiplication, and division, so that you can
-  evaluate expressions such as `(* 1 (+ (/ 4 2) 3))`.  Once that
+  evaluate expressions such as `1 * ((4 / 2) + 3)`.  Once that
   works, you decide to add the following features:
 
+---
+
+## Graceful failure
+
 * You decide you want to fail gracefully when there is division by
-  zero.  The obvious strategy: modify all of the code written so far
+  zero.  
+
+  `1 * ((4 / 0) + 3)`
+
+  The obvious strategy: modify all of the code written so far
   in order to handle an error condition.  This is unsatisfying, since
   there is no reason why the code for addition ought to worry about
   division by zero.
 
+---
+
+## Variable binding
+
 * You decide to add a `let` construction, e.g.,
 
-    `let x = 2 in (* 1 (+ (/ 4 x) 3))`
+    `let x = 2 in 1 * ((4 / x) + 3)`
 
   But this requires rewriting all the code again in order to deal with
   assigning values to variables.
 
+---
+
+## Meta computation
+
 * You decide to count the number of arithmetic operations performed
   for billing purposes.  But this requires rewriting all of the basic
   operations yet again.
+
+---
 
 ## Or you could use monads
 
@@ -40,6 +64,11 @@ arithmetic computations can be used without modification.
 
 ## The connection with natural language
 
+The main idea of this course was richly anticipated by 
+
+  [Ken Shan's 2002 Amsterdam Colloqium Paper](../Readings/shan-monads.pdf)
+
+***The basic idea***:
 Evaluating expressions is essentially what a formal grammar for a
 natural language does.  Instead of `(* 1 (+ (/ 4 2) 3))`, we might
 have `((the man)(fed (his mongoose)))`.  Each of the computational
@@ -62,11 +91,31 @@ natural language.
   side effects independent of the main "computation".  Expressives
   such as *damn*, as in *the man fed his damn mongoose*, commit the
   speaker to certain attitudes independently of the truth of the
-  statement in which it occurs.
+  statement in which it occurs.  
+
+  [See Asudeh and Giorgolo's 2015 ESSLLI course (second week)!]
+  (http://parles.upf.edu/llocs/esslli/content/natural-language-semantics-enriched-meanings)
+
   
 So the modular techniques developed for functional programming can be
 applied directly to many familiar problems in the interpretation of
 natural language.
+
+---
+### Side effects in natural language
+
+* Exactly two of the three frogs are in the pond.
+* It is in the tree.
+
+---
+
+* Exactly two of the three frogs are in the pond.
+* So exactly one of the three frogs is not in the pond.
+* It is in the tree.
+
+Side effect: setting up a discourse referent.
+
+---
 
 Although there is no limit to the variety of monads, several specific
 monads have proven to be useful, and have names:
@@ -84,7 +133,7 @@ monadic treatments have been proposed:
 * Intensionality (Shan 2002, Ben-avi and Winter 2009) [Reader monad]:
   adding a layer in which the values of expressions can depend on the
   choice of an evaluation parameter (usually, a possible world, or a
-  world and a time)
+  world and a time) 
 
 * Indexicality [Reader monad]
 
@@ -94,6 +143,7 @@ monadic treatments have been proposed:
   expressions.
 
 * Presupposition failure [Maybe monad]
+  * Kaplan
 
 * Expressives [Writer monad]
 
@@ -105,6 +155,14 @@ evaluation of expressions.  This has implications in the study of
 natural language for theories of weak crossover, negative polarity
 licensing, and more.
 
-Charlow's 2014 dissertation, which integrates a number of monads into
-a sophisticated medium-coverage grammar will be discussed in some
-detail in the course.
+  [Simon Charlow's 2014 dissertation](http://semanticsarchive.net/Archive/2JmMWRjY/charlow-semantics-exceptional-scope-diss.pdf)
+
+which integrates a number of monads into a sophisticated
+medium-coverage grammar will be discussed in some detail in the course
+on Thursday.
+
+* Focus
+  * Rooth 1985
+  * [Bekki and Asai](../Readings/bekki-asai-covert-movement.pdf)
+  * Charlow's dissertation (see above)
+  * Youyou Cong's recent work

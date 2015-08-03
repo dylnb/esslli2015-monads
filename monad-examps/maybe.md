@@ -1,3 +1,4 @@
+<!-- λ ◊ ≠ ∃ Λ ∀ ≡ α β γ ρ ω φ ψ Ω ○ μ η δ ζ ξ ⋆ ★ • ∙ ● ⚫ 𝟎 𝟏 𝟐 𝟘 𝟙 𝟚 𝟬 𝟭 𝟮 ⇧ (U+2e17) ¢ -->
 # The Maybe Monad: Presupposition and its Failures
 
 * As a first example of a monad in action, we'll need a simple language that we
@@ -171,3 +172,59 @@
     ```
 
 [Draw tree diagram with plumbing around the edge]
+
+---
+
+# A natural language application of the Maybe monad
+
+Finding a application for the Maybe monad in natural language is not
+hard.
+
+* We already have expressions and sentences.  Instead of 
+
+  $$2 + 3 = 5$$
+
+  We want
+
+  Ann and Bill saw Carl.
+
+* All we need is the lingusitic equivalent of division by zero.
+
+---
+
+# Presuppositions
+
+    * The King of France is bald.  [There is no King of France.]
+    * Ann's meerkat is sick.  [Not everyone owns a meerkat.]
+    * Ann finally realized that the world is round.
+    * etc.
+
+* For now, assume that DPs denote (refer to) objects. 
+
+* Computing reference is itself compositional, but assume we have a
+  black box named R.
+
+  * R("Ann") = ann
+  * R("The President of the US") = obama
+  * R("The King of France") = ____?
+
+[Kaplan on plexy](../Readings/kaplan-plexy.pdf)
+
+---
+
+# Let R map DPs not to objects of type Ent, but to Maybe Ent:
+
+  * R("Ann") = unit ann = Just ann
+  * R("The President of the US") = unit obama = Just obama
+  * R("The King of France") = Nothing
+
+  Then once we lift into the monad, we have
+
+  * Ann saw Bill = Just True
+  * Ann saw the President of the US = Just False.
+  * Ann saw the King of France = Nothing
+
+  Just to be clear, evaluating "Ann saw Bill" means evaluating 
+
+  `(R Ann) (map2 saw) (R Bill)`
+
