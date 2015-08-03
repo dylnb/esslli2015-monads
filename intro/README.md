@@ -14,7 +14,7 @@
 * For instance, imagine you are building a calculator program that
   evaluates artithmetic expressions.  You write code that performs
   addition, subtraction, multiplication, and division, so that you can
-  evaluate expressions such as `(* 1 (+ (/ 4 2) 3))`.  Once that
+  evaluate expressions such as `1 * ((4 / 2) + 3)`.  Once that
   works, you decide to add the following features:
 
 ---
@@ -22,7 +22,11 @@
 ## Graceful failure
 
 * You decide you want to fail gracefully when there is division by
-  zero.  The obvious strategy: modify all of the code written so far
+  zero.  
+
+  `1 * ((4 / 0) + 3)`
+
+  The obvious strategy: modify all of the code written so far
   in order to handle an error condition.  This is unsatisfying, since
   there is no reason why the code for addition ought to worry about
   division by zero.
@@ -33,7 +37,7 @@
 
 * You decide to add a `let` construction, e.g.,
 
-    `let x = 2 in (* 1 (+ (/ 4 x) 3))`
+    `let x = 2 in 1 * ((4 / x) + 3)`
 
   But this requires rewriting all the code again in order to deal with
   assigning values to variables.
