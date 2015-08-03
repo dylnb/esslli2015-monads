@@ -91,7 +91,9 @@ natural language.
   side effects independent of the main "computation".  Expressives
   such as *damn*, as in *the man fed his damn mongoose*, commit the
   speaker to certain attitudes independently of the truth of the
-  statement in which it occurs.
+  statement in which it occurs.  
+
+  See Asudeh and Giorgolo's 2015 ESSLLI course (second week)!
   
 So the modular techniques developed for functional programming can be
 applied directly to many familiar problems in the interpretation of
@@ -135,6 +137,8 @@ evaluation of expressions.  This has implications in the study of
 natural language for theories of weak crossover, negative polarity
 licensing, and more.
 
-Charlow's 2014 dissertation, which integrates a number of monads into
-a sophisticated medium-coverage grammar will be discussed in some
-detail in the course.
+  [Simon Charlow's 2014 dissertation](http://semanticsarchive.net/Archive/2JmMWRjY/charlow-semantics-exceptional-scope-diss.pdf)
+
+which integrates a number of monads into a sophisticated
+medium-coverage grammar will be discussed in some detail in the course
+on Thursday.
