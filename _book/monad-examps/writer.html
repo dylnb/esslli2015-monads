@@ -44,7 +44,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Mon Aug 03 2015 13:29:54 GMT+0200 (CEST)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Mon Aug 03 2015 16:22:18 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -173,15 +173,7 @@
     
         <li class="chapter " data-level="2.3" data-path="monad-examps/list.html">
             
-                
-                    <a href="../monad-examps/list.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        List
-                    </a>
-                
+            <span><b>2.3.</b> Set</span>
             
             
         </li>
@@ -479,15 +471,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="side-content-as-side-effect">Side Content as Side Effect</h1>
-<ul>
-<li>Constituents do not always </li>
-</ul>
-<p>```haskell
-data Writer w a = Writer (a, w)</p>
-<p>instance Monoid w =&gt; Monad (Writer w)
-  return x = Writer (x, mempty)
-  W</p>
+                        <h1 id="writer">Writer</h1>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">W</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mtext><mspace width="0.16667em"></mspace><mi>w</mi><mspace width="0.16667em"></mspace><mi>a</mi><mo>=</mo><mo>&#x27E8;</mo><mi>a</mi><mo separator="true">,</mo><mi>w</mi><mo>&#x27E9;</mo></mrow><annotation encoding="application/x-tex">\text{Writer}\, w\, a = \langle a, w\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord" style="margin-right:0.01389em;">W</span><span class="mord">r</span><span class="mord">i</span><span class="mord">t</span><span class="mord">e</span><span class="mord">r</span></span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mopen">&#x27E8;</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mclose">&#x27E9;</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mi>&#x3B7;</mi><mspace width="0.16667em"></mspace><mi>x</mi><mo>=</mo><mo>&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi mathvariant="normal">&#x2205;</mi><mo>&#x27E9;</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>m</mi><mo>&#x22C6;</mo><mi>k</mi><mo>=</mo><mo>&#x27E8;</mo><mi>y</mi><mo separator="true">,</mo><mi>w</mi><mo>&#x22C4;</mo><msup><mi>w</mi><mrow><mi mathvariant="normal">&#x2032;</mi></mrow></msup><mo>&#x27E9;</mo></mrow></mtd></mtr><mtr><mtd><mrow><mspace width="2em"></mspace><mspace width="2em"></mspace><mtext><mi mathvariant="normal">w</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext></mtext><mo>&#x27E8;</mo><mi>y</mi><mo separator="true">,</mo><msup><mi>w</mi><mrow><mi mathvariant="normal">&#x2032;</mi></mrow></msup><mo>&#x27E9;</mo><mo>=</mo><mi>k</mi><mspace width="0.16667em"></mspace><mi>x</mi></mrow></mtd></mtr><mtr><mtd><mrow><mspace width="2em"></mspace><mspace width="2em"></mspace><mspace width="2em"></mspace><mspace width="1em"></mspace><mo>&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi>w</mi><mo>&#x27E9;</mo><mo>=</mo><mi>m</mi></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
+\begin{array}{l}
+\eta\,x = \langle x, \emptyset \rangle\\
+m \star k = \langle y, w \diamond w&apos; \rangle\\
+\qquad\qquad\text{where } \langle y, w&apos; \rangle = k\,x\\
+\qquad\qquad\qquad\quad \langle x, w \rangle = m
+\end{array}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.6500000000000004em;"></span><span class="strut bottom" style="height:4.800000000000001em;vertical-align:-2.1500000000000004em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3B7;</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mopen">&#x27E8;</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord">&#x2205;</span><span class="mclose">&#x27E9;</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">&#x22C6;</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mrel">=</span><span class="mopen">&#x27E8;</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mbin">&#x22C4;</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">&#x2032;</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose">&#x27E9;</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mspace qquad"></span><span class="mord mspace qquad"></span><span class="text mord textstyle uncramped"><span class="mord" style="margin-right:0.01389em;">w</span><span class="mord">h</span><span class="mord">e</span><span class="mord">r</span><span class="mord">e</span><span class="mord mspace">&#xA0;</span></span><span class="mopen">&#x27E8;</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">&#x2032;</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose">&#x27E9;</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mspace qquad"></span><span class="mord mspace qquad"></span><span class="mord mspace qquad"></span><span class="mord mspace quad"></span><span class="mopen">&#x27E8;</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mclose">&#x27E9;</span><span class="mrel">=</span><span class="mord mathit">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></p>
 
                     
                     </section>

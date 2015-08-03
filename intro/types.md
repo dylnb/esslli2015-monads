@@ -55,9 +55,9 @@ x = trace2
   this case strings to NPs. They are functions that take values and return
   values
 
-```haskell
-:t Name
-Name :: String -> NP
+```
+> :t Name
+> Name :: String -> NP
 ```
 
 * Similarly, **type constructors** convert types to new types. They are

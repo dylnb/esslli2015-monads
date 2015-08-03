@@ -1,13 +1,10 @@
 # Reader
 
+$$\text{Reader}\,r\,a = r \to a$$
 
-```haskell
-data Reader r a = Reader (r -> a)
+$$\eta\,x = \lambda r.\, x$$
 
-instance Monad (Reader r) where
-  return x = \r -> x
-  m >>= k = \r -> k (m r) r
-```
+$$m \star k = \lambda r \to k\,(m\,r)\,r$$
 
 
 ---

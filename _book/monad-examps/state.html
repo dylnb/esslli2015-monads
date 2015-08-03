@@ -36,7 +36,7 @@
     <link rel="next" href="../gsv/index.html" />
     
     
-    <link rel="prev" href="../monad-examps/list.html" />
+    <link rel="prev" href="../monad-examps/reader.html" />
     
 
         
@@ -44,7 +44,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Mon Aug 03 2015 13:29:54 GMT+0200 (CEST)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Mon Aug 03 2015 16:22:18 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -173,15 +173,7 @@
     
         <li class="chapter " data-level="2.3" data-path="monad-examps/list.html">
             
-                
-                    <a href="../monad-examps/list.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        List
-                    </a>
-                
+            <span><b>2.3.</b> Set</span>
             
             
         </li>
@@ -480,6 +472,14 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="state">State</h1>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">S</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi></mtext><mspace width="0.16667em"></mspace><mi>s</mi><mspace width="0.16667em"></mspace><mi>a</mi><mo>=</mo><mi>s</mi><mo>&#x2192;</mo><mo>&#x27E8;</mo><mi>a</mi><mo separator="true">,</mo><mi>s</mi><mo>&#x27E9;</mo></mrow><annotation encoding="application/x-tex">\text{State}\,s\,a = s \to \langle a, s\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">S</span><span class="mord">t</span><span class="mord">a</span><span class="mord">t</span><span class="mord">e</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">s</span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">s</span><span class="mrel">&#x2192;</span><span class="mopen">&#x27E8;</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">s</span><span class="mclose">&#x27E9;</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mi>&#x3B7;</mi><mspace width="0.16667em"></mspace><mi>x</mi><mo>=</mo><mi>&#x3BB;</mi><mi>s</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mo>&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi>s</mi><mo>&#x27E9;</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>m</mi><mo>&#x22C6;</mo><mi>k</mi><mo>=</mo><mi>&#x3BB;</mi><mi>s</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>k</mi><mspace width="0.16667em"></mspace><mi>x</mi><mspace width="0.16667em"></mspace><mi>t</mi></mrow></mtd></mtr><mtr><mtd><mrow><mspace width="2em"></mspace><mspace width="2em"></mspace><mspace width="1em"></mspace><mtext><mi mathvariant="normal">w</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext></mtext><mo>&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi>t</mi><mo>&#x27E9;</mo><mo>=</mo><mi>m</mi><mspace width="0.16667em"></mspace><mi>s</mi></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
+\begin{array}{l}
+\eta\,x = \lambda s.\, \langle x, s\rangle\\
+m \star k = \lambda s.\, k\,x\,t\\
+\qquad\qquad\quad\text{where } \langle x, t \rangle = m\,s
+\end{array}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.05em;"></span><span class="strut bottom" style="height:3.6000000000000005em;vertical-align:-1.5500000000000007em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3B7;</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit">s</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mopen">&#x27E8;</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit">s</span><span class="mclose">&#x27E9;</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">&#x22C6;</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mrel">=</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit">s</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span><span class="mord mspace thinspace"></span><span class="mord mathit">t</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mspace qquad"></span><span class="mord mspace qquad"></span><span class="mord mspace quad"></span><span class="text mord textstyle uncramped"><span class="mord" style="margin-right:0.01389em;">w</span><span class="mord">h</span><span class="mord">e</span><span class="mord">r</span><span class="mord">e</span><span class="mord mspace">&#xA0;</span></span><span class="mopen">&#x27E8;</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit">t</span><span class="mclose">&#x27E9;</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord mspace thinspace"></span><span class="mord mathit">s</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></p>
 
                     
                     </section>
@@ -490,7 +490,7 @@
         </div>
 
         
-        <a href="../monad-examps/list.html" class="navigation navigation-prev " aria-label="Previous page: List"><i class="fa fa-angle-left"></i></a>
+        <a href="../monad-examps/reader.html" class="navigation navigation-prev " aria-label="Previous page: Reader"><i class="fa fa-angle-left"></i></a>
         
         
         <a href="../gsv/index.html" class="navigation navigation-next " aria-label="Next page: A Deeper Dive: Re-engineering GSV"><i class="fa fa-angle-right"></i></a>

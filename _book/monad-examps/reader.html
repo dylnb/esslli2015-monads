@@ -33,7 +33,7 @@
         
     
     
-    <link rel="next" href="../monad-examps/list.html" />
+    <link rel="next" href="../monad-examps/state.html" />
     
     
     <link rel="prev" href="../monad-examps/writer.html" />
@@ -44,7 +44,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2" data-basepath=".." data-revision="Mon Aug 03 2015 13:29:54 GMT+0200 (CEST)">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="Mon Aug 03 2015 16:22:18 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -173,15 +173,7 @@
     
         <li class="chapter " data-level="2.3" data-path="monad-examps/list.html">
             
-                
-                    <a href="../monad-examps/list.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        List
-                    </a>
-                
+            <span><b>2.3.</b> Set</span>
             
             
         </li>
@@ -480,12 +472,9 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="reader">Reader</h1>
-<pre><code class="lang-haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Reader</span> r a = <span class="hljs-type">Reader</span> <span class="hljs-container">(<span class="hljs-title">r</span> -&gt; <span class="hljs-title">a</span>)</span></span>
-<span class="hljs-class">
-<span class="hljs-keyword">instance</span> <span class="hljs-type">Monad</span> <span class="hljs-container">(<span class="hljs-type">Reader</span> <span class="hljs-title">r</span>)</span> <span class="hljs-keyword">where</span></span>
-  return x = \r -&gt; x
-  m &gt;&gt;= k = \r -&gt; k (m r) r
-</code></pre>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mtext><mspace width="0.16667em"></mspace><mi>r</mi><mspace width="0.16667em"></mspace><mi>a</mi><mo>=</mo><mi>r</mi><mo>&#x2192;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\text{Reader}\,r\,a = r \to a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">R</span><span class="mord">e</span><span class="mord">a</span><span class="mord">d</span><span class="mord">e</span><span class="mord">r</span></span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mrel">&#x2192;</span><span class="mord mathit">a</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B7;</mi><mspace width="0.16667em"></mspace><mi>x</mi><mo>=</mo><mi>&#x3BB;</mi><mi>r</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>x</mi></mrow><annotation encoding="application/x-tex">\eta\,x = \lambda r.\, x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3B7;</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>&#x22C6;</mo><mi>k</mi><mo>=</mo><mi>&#x3BB;</mi><mi>r</mi><mo>&#x2192;</mo><mi>k</mi><mspace width="0.16667em"></mspace><mo>(</mo><mi>m</mi><mspace width="0.16667em"></mspace><mi>r</mi><mo>)</mo><mspace width="0.16667em"></mspace><mi>r</mi></mrow><annotation encoding="application/x-tex">m \star k = \lambda r \to k\,(m\,r)\,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">&#x22C6;</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mrel">=</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mrel">&#x2192;</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mspace thinspace"></span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span></p>
 <hr>
 <pre><code class="lang-haskell"><span class="hljs-typedef"><span class="hljs-keyword">type</span> <span class="hljs-type">Context</span> = <span class="hljs-container">{<span class="hljs-title">speaker</span> :: <span class="hljs-type">Entity</span>, <span class="hljs-title">time</span> :: <span class="hljs-type">Int</span>}</span></span>
 
@@ -525,7 +514,7 @@
         <a href="../monad-examps/writer.html" class="navigation navigation-prev " aria-label="Previous page: Writer"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../monad-examps/list.html" class="navigation navigation-next " aria-label="Next page: List"><i class="fa fa-angle-right"></i></a>
+        <a href="../monad-examps/state.html" class="navigation navigation-next " aria-label="Next page: State"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

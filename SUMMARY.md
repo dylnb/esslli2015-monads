@@ -7,7 +7,7 @@
 * [Monads, More Examples](monad-examps/README.md)
     * [Writer](monad-examps/writer.md)
     * [Reader](monad-examps/reader.md)
-    * [List](monad-examps/list.md)
+    * [Set](monad-examps/list.md)
     * [State](monad-examps/state.md)
 * [A Deeper Dive: Re-engineering GSV](gsv/README.md)
     * [A Monad for Intensional State](gsv/gsv-monad.md)
