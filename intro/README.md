@@ -64,6 +64,11 @@ arithmetic computations can be used without modification.
 
 ## The connection with natural language
 
+The main idea of this course was richly anticipated by 
+
+  [Ken Shan's 2002 Amsterdam Colloqium Paper](../Readings/shan-2002.pdf)
+
+***The basic idea**:
 Evaluating expressions is essentially what a formal grammar for a
 natural language does.  Instead of `(* 1 (+ (/ 4 2) 3))`, we might
 have `((the man)(fed (his mongoose)))`.  Each of the computational
