@@ -1,21 +1,35 @@
 # Introduction
 
+## Chris Barker (chris.barker@nyu.edu)
+## Dylan Bumford (dbumford@gmail.edu)
+## This course [github.com/dylnb/esslli2015-monads](github.com/dylanb/esslli2015-monads)
+
+---
+
 * Monads are a technique from functional programming for articulating
   computations into layers
 
-[This discussion inspired by Wadler's "Monads for functional programming".]
+[This discussion inspired by Wadler's "Monads for functional programming".](../Readings/wadler-monads.pdf)
 
-For instance, imagine you are building a calculator program that
+* For instance, imagine you are building a calculator program that
   evaluates artithmetic expressions.  You write code that performs
   addition, subtraction, multiplication, and division, so that you can
   evaluate expressions such as `(* 1 (+ (/ 4 2) 3))`.  Once that
   works, you decide to add the following features:
+
+---
+
+## Graceful failure
 
 * You decide you want to fail gracefully when there is division by
   zero.  The obvious strategy: modify all of the code written so far
   in order to handle an error condition.  This is unsatisfying, since
   there is no reason why the code for addition ought to worry about
   division by zero.
+
+---
+
+## Variable binding
 
 * You decide to add a `let` construction, e.g.,
 
@@ -24,9 +38,15 @@ For instance, imagine you are building a calculator program that
   But this requires rewriting all the code again in order to deal with
   assigning values to variables.
 
+---
+
+## Meta computation
+
 * You decide to count the number of arithmetic operations performed
   for billing purposes.  But this requires rewriting all of the basic
   operations yet again.
+
+---
 
 ## Or you could use monads
 
@@ -84,7 +104,7 @@ monadic treatments have been proposed:
 * Intensionality (Shan 2002, Ben-avi and Winter 2009) [Reader monad]:
   adding a layer in which the values of expressions can depend on the
   choice of an evaluation parameter (usually, a possible world, or a
-  world and a time)
+  world and a time) 
 
 * Indexicality [Reader monad]
 
@@ -94,6 +114,7 @@ monadic treatments have been proposed:
   expressions.
 
 * Presupposition failure [Maybe monad]
+  * Kaplan
 
 * Expressives [Writer monad]
 
