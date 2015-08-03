@@ -208,7 +208,7 @@ hard.
   * R("The President of the US") = obama
   * R("The King of France") = ____?
 
-[Kaplan on plexy(kaplen-plexy.pdf)]
+[Kaplan on plexy](kaplan-plexy.pdf)]
 
 ---
 
