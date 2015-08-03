@@ -4,11 +4,11 @@
   need to evaluate.  We'll start with arithmetic, but move quickly to natural
   language.
 
-    ```haskell
-    7 == 7
-    2 + 3 == 5
-    8 / (3 - 1) == 4
-    ```
+  $$7 = 7$$
+
+  $$2 + 3 = 5$$
+
+  $$8 / (3 - 1) = 4$$
 
 * We want these sentences to evaluate to the boolean True.
 
@@ -20,10 +20,9 @@
 
 * Start with the usual operations with their usual semantics
 
-    ```haskell
-    (+), (-), (*) :: Int -> Int -> Int
-    (==) :: Int -> Int -> Bool
-    ```
+  $$(+),\ (-),\ (\times) :: \text{Int} \to \text{Int} \to \text{Int}$$
+
+  $$(=) :: \text{Int} \to \text{Int} \to \text{Bool}$$
 
 
 ---
@@ -33,25 +32,25 @@
 
 * But what about
 
-    8 / (3 - 3) = 4
+  $$8 / (3 - 3) = 4$$
 
-*  In order to evaluate this sentence, we need to divide 8 by 0, which is
-   undefined.  So we need for our division operator to return either a number,
-   or some object representing that an error has occurred.
+* In order to evaluate this sentence, we need to divide 8 by 0, which is
+  undefined.  So we need for our division operator to return either a number,
+  or some object representing that an error has occurred.
 
-$$
-\frac{x}{y} =
-\begin{cases}
-  \iota z.\, z \times y = x \quad & \text{if} y \neq 0\\
-  \#                         & \text{otherwise}
-\end{cases}
-$$
+  $$
+  x / y =
+  \begin{cases}
+    \iota z.\, z \times y = x \quad & \text{if } y \neq 0\\
+    \#                         & \text{otherwise}
+  \end{cases}
+  $$
 
 
 ---
 
 
-# Unsafe Division
+# Unsafe Division (Cont'd)
 
 * But since the result of a division can itself serve as the input to other
   arithmetic operations, as in `4 + (8 / 2)`, we also need to adjust the
@@ -76,15 +75,17 @@ $$
 
 * We'll do this with the following monad, which we'll call the Maybe monad:
 
-    ```haskell
-    data Maybe a = Just a | Nothing
+  $$\text{Maybe}\, a = \text{Just}\, a \mid \text{Nothing}$$
 
-    instance Monad Maybe where
-      return a = Just a
-      u >>= f = case u of Nothing -> Nothing
-                          Just x -> f x
-    ```
+  $$\eta\, x = \text{Just}\,x$$
 
+  $$
+  m \star k = 
+  \begin{cases}
+    \text{Nothing} \quad & \text{if } m = \text{Nothing}\\
+    k\,x                 & \text{if } m = \text{Just}\,x
+  \end{cases}
+  $$
 
 ---
 
@@ -94,11 +95,18 @@ $$
 * Our division operator will need to be ready for division by zero. Let `/` be
   the usual division operator. So define 
 
-    ```haskell
-    safe/ :: Maybe Int -> Maybe Int -> Maybe Int
-    safe/ m n = m >>= \x -> n >>= \y -> test x y
-      where test x y = if y == 0 then Nothing else Just (x / y)
-    ```
+  $$
+  \text{safe/} :: \text{Maybe Int} \to \text{Maybe Int} \to \text{Maybe Int}
+  $$
+
+  $$
+  \text{safe/}\,m\,n =
+  m \star \lambda x.\, n \star \lambda y.\,
+  \begin{cases}
+    \text{Nothing} \quad     & \text{if} x = 0\\
+    \text{Just}\,\frac{y}{x} & \text{otherwise}
+  \end{cases}
+  $$
 
 ---
 
@@ -108,10 +116,15 @@ $$
 * For the other operators, we write a general lifting function that lifts the
   operators into the monadic computation.
 
-    ```haskell
-    map2 :: (a -> b -> c) -> Maybe a -> Maybe b -> Maybe c
-    map2 f u v == u >>= (\x -> v >>= (\y -> return (f x y)))
-    ```
+  $$
+  \text{map2} ::
+  (a \to b \to c) \to \text{Maybe}\,a \to \text{Maybe}\,b \to \text{Maybe}\,c
+  $$
+
+  $$
+  \text{map2}\,f\,u\,v =
+  u \star \lambda x.\, v \star \lambda y.\, \eta\,(f x y)
+  $$
 
 
 ---
@@ -127,10 +140,10 @@ $$
           +-------+---------+               +--------+---------+   
           |                 |               |                  |   
           |                 |               |                  |   
-       unit 2         +-----+------+     map2 (==)          unit 5   
+         η 2          +-----+------+     map2 (==)            η 5   
                       |            |
                       |            |
-                   map2 (+)      unit 3
+                   map2 (+)       η 3  
                                                                   
 
 * Smoothly evaluates to `Just True`
