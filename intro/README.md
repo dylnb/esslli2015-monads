@@ -2,7 +2,7 @@
 
 ## Chris Barker (chris.barker@nyu.edu)
 ## Dylan Bumford (dbumford@gmail.edu)
-## This course [github.com/dylnb/esslli2015-monads](github.com/dylanb/esslli2015-monads)
+## This course [github.com/dylnb/esslli2015-monads](github.com/dylnb/esslli2015-monads)
 
 ---
 
