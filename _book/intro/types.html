@@ -1,0 +1,733 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Types, Type Classes, and Monads | Monads and Natural Language Semantics</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../monad-examps/maybe.html" />
+    
+    
+    <link rel="prev" href="../intro/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.1" data-basepath=".." data-revision="Mon Aug 03 2015 13:29:54 GMT+0200 (CEST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Monads and Natural Language
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="intro/index.html">
+            
+                
+                    <a href="../intro/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Introduction to Monads
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.1" data-path="intro/types.html">
+            
+                
+                    <a href="../intro/types.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Types, Type Classes, and Monads
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="monad-examps/maybe.html">
+            
+                
+                    <a href="../monad-examps/maybe.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        First Example: Maybe
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="monad-examps/index.html">
+            
+                
+                    <a href="../monad-examps/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Monads, More Examples
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="monad-examps/writer.html">
+            
+                
+                    <a href="../monad-examps/writer.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Writer
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="monad-examps/reader.html">
+            
+                
+                    <a href="../monad-examps/reader.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Reader
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="monad-examps/list.html">
+            
+                
+                    <a href="../monad-examps/list.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        List
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="monad-examps/state.html">
+            
+                
+                    <a href="../monad-examps/state.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        State
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="gsv/index.html">
+            
+                
+                    <a href="../gsv/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        A Deeper Dive: Re-engineering GSV
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="gsv/gsv-monad.html">
+            
+                
+                    <a href="../gsv/gsv-monad.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        A Monad for Intensional State
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="combined-effects/index.html">
+            
+                
+                    <a href="../combined-effects/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Combining Effects
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="combined-effects/xforms.html">
+            
+                
+                    <a href="../combined-effects/xforms.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Transformers
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="combined-effects/dynamics.html">
+            
+                
+                    <a href="../combined-effects/dynamics.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Dynamic Semantics
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="combined-effects/applicatives.html">
+            
+                
+                    <a href="../combined-effects/applicatives.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Applicatives
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="combined-effects/focus.html">
+            
+                
+                    <a href="../combined-effects/focus.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        Focus
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="continuations/index.html">
+            
+                
+                    <a href="../continuations/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Continuations
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="continuations/scope.html">
+            
+                
+                    <a href="../continuations/scope.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        Continuations for Scope
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="continuations/layers.html">
+            
+                
+                    <a href="../continuations/layers.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Continuations for Layered Effects
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Monads and Natural Language Semantics</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="basic-types">Basic Types</h1>
+<ul>
+<li>Char, Int, Bool, ...</li>
+<li><p>Tuples</p>
+<pre><code class="lang-haskell">  pos3, neg3 :: (<span class="hljs-type">Int</span>, <span class="hljs-type">Bool</span>)
+  pos3 = (<span class="hljs-number">3</span>, <span class="hljs-type">True</span>)
+  neg3 = (<span class="hljs-number">3</span>, <span class="hljs-type">False</span>)
+</code></pre>
+</li>
+<li><p>Functions</p>
+<pre><code class="lang-haskell">  plus3 :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span>
+  plus3 x = <span class="hljs-number">3</span> + x
+</code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="algebraic-types">Algebraic Types</h1>
+<ul>
+<li>Product Types</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Trace</span> = <span class="hljs-type">Trace</span> <span class="hljs-container">{<span class="hljs-title">var</span> :: <span class="hljs-type">Char</span>, <span class="hljs-title">tag</span> :: <span class="hljs-type">Int</span>}</span></span>
+
+<span class="hljs-title">newtrace</span> :: <span class="hljs-type">Trace</span>
+<span class="hljs-title">newtrace</span> = <span class="hljs-type">Trace</span> &apos;t&apos; <span class="hljs-number">1</span>
+
+<span class="hljs-title">trace2</span> :: <span class="hljs-type">Trace</span>
+<span class="hljs-title">trace2</span> = <span class="hljs-type">Trace</span> {var = &apos;t&apos;, tag = <span class="hljs-number">4</span>}
+</code></pre>
+<ul>
+<li>Sum Types</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">NP</span> = <span class="hljs-type">Trace</span> | <span class="hljs-type">Name</span> <span class="hljs-type">String</span></span>
+
+<span class="hljs-title">john</span> :: <span class="hljs-type">NP</span>
+<span class="hljs-title">john</span> = <span class="hljs-type">Name</span> <span class="hljs-string">&quot;John&quot;</span>
+
+<span class="hljs-title">x</span> :: <span class="hljs-type">NP</span>
+<span class="hljs-title">x</span> = trace2
+</code></pre>
+<hr>
+<h1 id="parameterized-types">Parameterized Types</h1>
+<ul>
+<li><strong>Data constructors</strong> like <code>Name</code> convert values from one type to another, in
+this case strings to NPs. They are functions that take values and return
+values</li>
+</ul>
+<pre><code class="lang-haskell">:t <span class="hljs-type">Name</span>
+<span class="hljs-type">Name</span> :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">NP</span>
+</code></pre>
+<ul>
+<li>Similarly, <strong>type constructors</strong> convert types to new types. They are
+functions that take <em>types</em> and return <em>types</em></li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">List</span> a = <span class="hljs-type">Empty</span> | <span class="hljs-type">Cons</span> a <span class="hljs-container">(<span class="hljs-type">List</span> <span class="hljs-title">a</span>)</span></span>
+
+<span class="hljs-title">domain</span> :: <span class="hljs-type">List</span> <span class="hljs-type">Entity</span>
+<span class="hljs-title">domain</span> = <span class="hljs-type">Cons</span> <span class="hljs-type">John</span> (<span class="hljs-type">Cons</span> <span class="hljs-type">Mary</span> <span class="hljs-type">Nil</span>)
+
+<span class="hljs-comment">-- domain :: [Entity]</span>
+<span class="hljs-comment">-- domain = [John, Mary]</span>
+
+<span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Pair</span> a = <span class="hljs-type">Pair</span> <span class="hljs-container">(<span class="hljs-title">a</span>, <span class="hljs-title">a</span>)</span></span>
+
+<span class="hljs-title">theSmiths</span> :: <span class="hljs-type">Pair</span> <span class="hljs-type">Entity</span>
+<span class="hljs-title">theSmiths</span> = <span class="hljs-type">Pair</span> (<span class="hljs-type">John</span>, <span class="hljs-type">Mary</span>)
+
+<span class="hljs-title">point</span> :: <span class="hljs-type">Pair</span> <span class="hljs-type">Int</span>
+<span class="hljs-title">point</span> = <span class="hljs-type">Pair</span> (<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+</code></pre>
+<hr>
+<h1 id="natural-type-classes">Natural (Type) Classes</h1>
+<ul>
+<li>Many types represent data that are displayable. For this, we have a single
+<code>show</code> function, which we define for each displayable type, including our
+<em>ad-hoc</em> <code>NP</code> type.</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-class"><span class="hljs-keyword">instance</span> <span class="hljs-type">Show</span> <span class="hljs-type">NP</span> <span class="hljs-keyword">where</span></span>
+  show (<span class="hljs-type">Trace</span> v n) = <span class="hljs-string">&quot;Var: &quot;</span> + show v + show n
+  show (<span class="hljs-type">Name</span> s)    = <span class="hljs-string">&quot;Name: &quot;</span> + s
+</code></pre>
+<ul>
+<li>Likewise, many types of things can be tested for equality. But for parametric
+types, it may depend on whether the type parameter itself is defined for such
+a test.</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-class"><span class="hljs-keyword">instance</span> <span class="hljs-type">Eq</span> a =&gt; <span class="hljs-type">Eq</span> <span class="hljs-container">(<span class="hljs-type">List</span> <span class="hljs-title">a</span>)</span> <span class="hljs-keyword">where</span></span>
+  <span class="hljs-type">Nil</span> == <span class="hljs-type">Nil</span>                 = <span class="hljs-type">True</span>
+  (<span class="hljs-type">Cons</span> x xs) == (<span class="hljs-type">Cons</span> y ys) = x == y &amp;&amp; xs == ys
+  _ == _                     = <span class="hljs-type">False</span>
+</code></pre>
+<hr>
+<h1 id="-ad-hoc-polymorphism"><em>Ad hoc</em> Polymorphism</h1>
+<ul>
+<li><p>The <code>show</code> and <code>(==)</code> functions are <em>overloaded</em> to work on many different
+types, and what they do with each type is your prerogative.</p>
+</li>
+<li><p>This makes sense for <code>show</code>, but you might expect <code>(==)</code> to be somewhat more
+restricted. For instance, this definition doesn&apos;t match anybody&apos;s
+expectations about what an equality test should do.</p>
+<pre><code class="lang-haskell"><span class="hljs-class">  <span class="hljs-keyword">instance</span> <span class="hljs-type">Eq</span> <span class="hljs-type">NP</span> <span class="hljs-keyword">where</span></span>
+    _ == _  = <span class="hljs-type">False</span>
+</code></pre>
+</li>
+<li><p>For things like equality, we say that any specification of the <code>(==)</code>
+relation for some particular type should satisfy a few well-known conditions.</p>
+<ul>
+<li>reflexivity: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x2200;</mi><mi>a</mi><mi mathvariant="normal">.</mi><mtext>&#xA0;</mtext><mi>a</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\forall a.\  a = a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord">&#x2200;</span><span class="mord mathit">a</span><span class="mord">.</span><span class="mord mspace">&#xA0;</span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span></li>
+<li>symmetry: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x2200;</mi><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mi mathvariant="normal">.</mi><mtext>&#xA0;</mtext><mi>a</mi><mo>=</mo><mi>b</mi><mo>&#x21D2;</mo><mi>b</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\forall a,b.\   a = b \Rightarrow b = a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord">&#x2200;</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mord">.</span><span class="mord mspace">&#xA0;</span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mrel">&#x21D2;</span><span class="mord mathit">b</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span></li>
+<li>transitivity: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x2200;</mi><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mi mathvariant="normal">.</mi><mtext>&#xA0;</mtext><mi>a</mi><mo>=</mo><mi>b</mi><mo>&#x2227;</mo><mi>b</mi><mo>=</mo><mi>c</mi><mo>&#x21D2;</mo><mi>a</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\forall a,b,c.\   a = b \wedge b = c \Rightarrow a = c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord">&#x2200;</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mpunct">,</span><span class="mord mathit">c</span><span class="mord">.</span><span class="mord mspace">&#xA0;</span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mbin">&#x2227;</span><span class="mord mathit">b</span><span class="mrel">=</span><span class="mord mathit">c</span><span class="mrel">&#x21D2;</span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">c</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<!-- * reflexivity: `∀α. α == α` -->
+<!-- * symmetry: `∀α,β. α == β ⇒ β == α` -->
+<!-- * transitivity: `∀α,β,γ. α == β && β == γ ⇒ α == γ` -->
+<hr>
+<h1 id="functors">Functors</h1>
+<ul>
+<li>Like equality, there are other polymorphic functions that are expected to
+behave according to particular <em>laws</em>.</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Functor</span> m <span class="hljs-keyword">where</span></span>
+  fmap :: (a -&gt; b) -&gt; m a -&gt; m b
+  <span class="hljs-comment">-- note that a and b can be any types whatsoever here; this tells you that</span>
+  <span class="hljs-comment">-- being &quot;mappable&quot; is a property of the type constructor, regardless of what</span>
+  <span class="hljs-comment">-- sorts of values it contains</span>
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Functor</span> <span class="hljs-type">List</span> <span class="hljs-keyword">where</span></span>
+  fmap _ <span class="hljs-type">Nil</span> = <span class="hljs-type">Nil</span>
+  fmap f (<span class="hljs-type">Cons</span> x xs) = <span class="hljs-type">Cons</span> (f x) (fmap f xs)
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Functor</span> <span class="hljs-type">Pair</span> <span class="hljs-keyword">where</span></span>
+  fmap (<span class="hljs-type">Pair</span> (x, y)) = <span class="hljs-type">Pair</span> (f x, f y)
+</code></pre>
+<ul>
+<li><p>Any specialization of the mapping function <code>fmap</code> for a custom type <code>M</code>
+should satisfy:</p>
+<ul>
+<li><code>fmap id m</code> is equivalent to <code>m</code>, for any <code>m :: M</code></li>
+<li><code>fmap (g &#x25CB; h) m</code> is equivalent to <code>fmap g (fmap h m)</code> , for any <code>m :: M</code></li>
+</ul>
+</li>
+<li><p>When it does, we call <code>M</code> a <strong>functor</strong> under its definition of <code>fmap</code></p>
+</li>
+</ul>
+<hr>
+<h1 id="bind">Bind</h1>
+<ul>
+<li><p>Another commonly overloaded function is a close cousin of <code>fmap</code> called
+<em>bind</em>, spelled <code>(&gt;&gt;=)</code>.</p>
+</li>
+<li><p>Where different definitions of <code>fmap</code> specify how to map a simple <code>a -&gt; b</code>
+function over some structure full of <code>a</code>s (to end up with a structure full of
+<code>b</code>s), definitions of <code>bind</code> specify how to map an <em>structure-generating
+function</em> of type <code>a -&gt; m b</code> over a structure full of <code>a</code>s (to end up with a
+structure full of <code>b</code>s.</p>
+</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Functor</span> m <span class="hljs-keyword">where</span></span>
+  fmap :: (a -&gt; b) -&gt; m a -&gt; m b
+<span class="hljs-class">
+<span class="hljs-keyword">class</span> <span class="hljs-type">Bind</span> m <span class="hljs-keyword">where</span></span>
+  bind :: (a -&gt; m b) -&gt; m a -&gt; m b
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Bind</span> <span class="hljs-container">(<span class="hljs-type">List</span> <span class="hljs-title">a</span>)</span> <span class="hljs-keyword">where</span></span>
+  bind f <span class="hljs-type">Nil</span> = <span class="hljs-type">Nil</span>
+  bind f (<span class="hljs-type">Cons</span> x xs) = concat $ <span class="hljs-type">Cons</span> (f x) (bind f xs) 
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Bind</span> <span class="hljs-container">(<span class="hljs-type">Pair</span> <span class="hljs-title">a</span>)</span> <span class="hljs-keyword">where</span></span>
+  bind f (<span class="hljs-type">Pair</span> (x,y)) = <span class="hljs-type">Pair</span> (fst (f x), snd (f y))
+</code></pre>
+<hr>
+<h1 id="monads">Monads</h1>
+<ul>
+<li><p>These structure-generating <code>a -&gt; m b</code> functions are called <strong>Kliesli
+arrows</strong>.</p>
+</li>
+<li><p>Any type for which there is also a special &quot;trivial&quot; Kliesli arrow is
+called a <strong>monad</strong>.</p>
+</li>
+</ul>
+<pre><code class="lang-haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Bind</span> m =&gt; <span class="hljs-type">Monad</span> m <span class="hljs-keyword">where</span></span>
+  return :: a -&gt; m a
+  (&gt;&gt;=)  :: m a -&gt; (a -&gt; m b) -&gt; m b
+  (&gt;&gt;=)  = flip bind
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Monad</span> <span class="hljs-type">List</span> <span class="hljs-keyword">where</span></span>
+  return x = <span class="hljs-type">Cons</span> x <span class="hljs-type">Nil</span>
+<span class="hljs-class">
+<span class="hljs-keyword">instance</span> <span class="hljs-type">Monad</span> <span class="hljs-type">Pair</span> <span class="hljs-keyword">where</span></span>
+  return x = <span class="hljs-type">Pair</span> (x, x)
+</code></pre>
+<hr>
+<h1 id="monad-laws">Monad Laws</h1>
+<ul>
+<li><p>But as with <code>(==)</code> and <code>fmap</code>, these definitions of <code>bind</code> and <code>return</code> are
+expected to satisfy certain laws</p>
+<ul>
+<li>left identity: <code>return x &gt;&gt;= f</code> is equivalent to <code>f x</code></li>
+<li>right identity: <code>m &gt;&gt;= return</code> is equivalent to <code>m</code></li>
+<li>associativity: <code>(m &gt;&gt;= f) &gt;&gt;= g</code> is equivalent to <code>m &gt;&gt;= (\x -&gt; f x &gt;&gt;= g)</code></li>
+</ul>
+</li>
+<li><p>Loosely speaking, the left identity law guarantees that definitions of
+<code>return</code> don&apos;t have any side effects.</p>
+</li>
+<li><p>The right identity law guarantees that definitions of <code>return</code> don&apos;t consume
+or modify any side effects.</p>
+</li>
+<li><p>The associativity law says that chains of effects should be <em>linear</em></p>
+</li>
+<li><p>And that&apos;s it. A monad is a singly-parameterized type constructor together
+with a mapping function called <strong>bind</strong> and an injection function
+called <strong>unit</strong> that satisfy the monad laws.</p>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../intro/index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Monads"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../monad-examps/maybe.html" class="navigation navigation-next " aria-label="Next page: First Example: Maybe"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

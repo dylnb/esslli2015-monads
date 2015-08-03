@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>First Example: Maybe | Monads and Natural Language Semantics</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../monad-examps/index.html" />
+    
+    
+    <link rel="prev" href="../intro/types.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.2" data-basepath=".." data-revision="Mon Aug 03 2015 13:29:54 GMT+0200 (CEST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Monads and Natural Language
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="intro/index.html">
+            
+                
+                    <a href="../intro/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Introduction to Monads
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="intro/types.html">
+            
+                
+                    <a href="../intro/types.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Types, Type Classes, and Monads
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="monad-examps/maybe.html">
+            
+                
+                    <a href="../monad-examps/maybe.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        First Example: Maybe
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="monad-examps/index.html">
+            
+                
+                    <a href="../monad-examps/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Monads, More Examples
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="monad-examps/writer.html">
+            
+                
+                    <a href="../monad-examps/writer.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Writer
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="monad-examps/reader.html">
+            
+                
+                    <a href="../monad-examps/reader.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Reader
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="monad-examps/list.html">
+            
+                
+                    <a href="../monad-examps/list.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        List
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="monad-examps/state.html">
+            
+                
+                    <a href="../monad-examps/state.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        State
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="gsv/index.html">
+            
+                
+                    <a href="../gsv/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        A Deeper Dive: Re-engineering GSV
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="gsv/gsv-monad.html">
+            
+                
+                    <a href="../gsv/gsv-monad.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        A Monad for Intensional State
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="combined-effects/index.html">
+            
+                
+                    <a href="../combined-effects/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Combining Effects
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="combined-effects/xforms.html">
+            
+                
+                    <a href="../combined-effects/xforms.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Transformers
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="combined-effects/dynamics.html">
+            
+                
+                    <a href="../combined-effects/dynamics.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Dynamic Semantics
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="combined-effects/applicatives.html">
+            
+                
+                    <a href="../combined-effects/applicatives.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Applicatives
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="combined-effects/focus.html">
+            
+                
+                    <a href="../combined-effects/focus.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        Focus
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="continuations/index.html">
+            
+                
+                    <a href="../continuations/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Continuations
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="continuations/scope.html">
+            
+                
+                    <a href="../continuations/scope.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        Continuations for Scope
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="continuations/layers.html">
+            
+                
+                    <a href="../continuations/layers.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Continuations for Layered Effects
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Monads and Natural Language Semantics</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="the-maybe-monad-presupposition-and-its-failures">The Maybe Monad: Presupposition and its Failures</h1>
+<ul>
+<li><p>As a first example of a monad in action, we&apos;ll need a simple language that we
+need to evaluate.  We&apos;ll start with arithmetic, but move quickly to natural
+language.</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">7 = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord">7</span><span class="mrel">=</span><span class="mord">7</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2 + 3 = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">2</span><span class="mbin">+</span><span class="mord">3</span><span class="mrel">=</span><span class="mord">5</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mi mathvariant="normal">/</mi><mo>(</mo><mn>3</mn><mo>&#x2212;</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">8 / (3 - 1) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord">8</span><span class="mord">/</span><span class="mopen">(</span><span class="mord">3</span><span class="mbin">&#x2212;</span><span class="mord">1</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">4</span></span></span></span></p>
+</li>
+<li><p>We want these sentences to evaluate to the boolean True.</p>
+</li>
+</ul>
+<hr>
+<h1 id="basic-arithmetic">Basic Arithmetic</h1>
+<ul>
+<li><p>Start with the usual operations with their usual semantics</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mo>+</mo><mo>)</mo><mo separator="true">,</mo><mtext>&#xA0;</mtext><mo>(</mo><mo>&#x2212;</mo><mo>)</mo><mo separator="true">,</mo><mtext>&#xA0;</mtext><mo>(</mo><mo>&#xD7;</mo><mo>)</mo><mo>:</mo><mo>:</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext></mrow><annotation encoding="application/x-tex">(+),\ (-),\ (\times) :: \text{Int} \to \text{Int} \to \text{Int}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord">+</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mord mspace">&#xA0;</span><span class="mopen">(</span><span class="mord">&#x2212;</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mord mspace">&#xA0;</span><span class="mopen">(</span><span class="mord">&#xD7;</span><span class="mclose">)</span><span class="mrel">:</span><span class="mrel">:</span><span class="text mord textstyle uncramped"><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mo>=</mo><mo>)</mo><mo>:</mo><mo>:</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mtext></mrow><annotation encoding="application/x-tex">(=) :: \text{Int} \to \text{Int} \to \text{Bool}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mrel">=</span><span class="mclose">)</span><span class="mrel">:</span><span class="mrel">:</span><span class="text mord textstyle uncramped"><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">B</span><span class="mord">o</span><span class="mord">o</span><span class="mord">l</span></span></span></span></span></p>
+</li>
+</ul>
+<hr>
+<h1 id="unsafe-division">Unsafe Division</h1>
+<ul>
+<li><p>But what about</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mi mathvariant="normal">/</mi><mo>(</mo><mn>3</mn><mo>&#x2212;</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">8 / (3 - 3) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord">8</span><span class="mord">/</span><span class="mopen">(</span><span class="mord">3</span><span class="mbin">&#x2212;</span><span class="mord">3</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">4</span></span></span></span></p>
+</li>
+<li><p>In order to evaluate this sentence, we need to divide 8 by 0, which is
+undefined.  So we need for our division operator to return either a number,
+or some object representing that an error has occurred.</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mi mathvariant="normal">/</mi><mi>y</mi><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mi>&#x3B9;</mi><mi>z</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>z</mi><mo>&#xD7;</mo><mi>y</mi><mo>=</mo><mi>x</mi><mspace width="1em"></mspace></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mtext>&#xA0;</mtext></mtext><mi>y</mi><mo>&#x2260;</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd><mrow><mi mathvariant="normal">#</mi></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">w</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mtext></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+  x / y =
+  \begin{cases}
+    \iota z.\, z \times y = x \quad &amp; \text{if } y \neq 0\\
+    \#                         &amp; \text{otherwise}
+  \end{cases}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.75em;"></span><span class="strut bottom" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mord">/</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit">&#x3B9;</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mbin">&#xD7;</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mord mspace quad"></span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord">#</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">i</span><span class="mord" style="margin-right:0.07778em;">f</span><span class="mord mspace">&#xA0;</span></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">&#x2260;</span><span class="mord">0</span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">e</span><span class="mord">r</span><span class="mord" style="margin-right:0.01389em;">w</span><span class="mord">i</span><span class="mord">s</span><span class="mord">e</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+</li>
+</ul>
+<hr>
+<h1 id="unsafe-division-cont-d">Unsafe Division (Cont&apos;d)</h1>
+<ul>
+<li><p>But since the result of a division can itself serve as the input to other
+arithmetic operations, as in <code>4 + (8 / 2)</code>, we also need to adjust the
+meanings of addition and all of the other arithmetic functions in order to
+prepare them for the possibility that the result of some division somewhere
+might be undefined.</p>
+</li>
+<li><p>This is unfair --- addition is not part of the problem, yet
+must go out of its normal path in order to contribute to a solution.</p>
+</li>
+<li><p>We want a more general solution, one that allows information about the
+presence of an error state to propagate throughout the computation without
+having to adjust the internal workings of operators that don&apos;t create error
+conditions.</p>
+</li>
+</ul>
+<hr>
+<h1 id="introducing-the-maybe-monad">Introducing the Maybe Monad</h1>
+<ul>
+<li><p>We&apos;ll do this with the following monad, which we&apos;ll call the Maybe monad:</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi></mtext><mspace width="0.16667em"></mspace><mi>a</mi><mo>=</mo><mtext><mi mathvariant="normal">J</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mtext><mspace width="0.16667em"></mspace><mi>a</mi><mo>&#x2223;</mo><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">g</mi></mtext></mrow><annotation encoding="application/x-tex">\text{Maybe}\, a = \text{Just}\, a \mid \text{Nothing}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">=</span><span class="text mord textstyle uncramped"><span class="mord">J</span><span class="mord">u</span><span class="mord">s</span><span class="mord">t</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">&#x2223;</span><span class="text mord textstyle uncramped"><span class="mord">N</span><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">i</span><span class="mord">n</span><span class="mord" style="margin-right:0.01389em;">g</span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B7;</mi><mspace width="0.16667em"></mspace><mi>x</mi><mo>=</mo><mtext><mi mathvariant="normal">J</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mtext><mspace width="0.16667em"></mspace><mi>x</mi></mrow><annotation encoding="application/x-tex">\eta\, x = \text{Just}\,x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3B7;</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span><span class="mrel">=</span><span class="text mord textstyle uncramped"><span class="mord">J</span><span class="mord">u</span><span class="mord">s</span><span class="mord">t</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>&#x22C6;</mo><mi>k</mi><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">g</mi></mtext><mspace width="1em"></mspace></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mtext>&#xA0;</mtext></mtext><mi>m</mi><mo>=</mo><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">g</mi></mtext></mrow></mtd></mtr><mtr><mtd><mrow><mi>k</mi><mspace width="0.16667em"></mspace><mi>x</mi></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mtext>&#xA0;</mtext></mtext><mi>m</mi><mo>=</mo><mtext><mi mathvariant="normal">J</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mtext><mspace width="0.16667em"></mspace><mi>x</mi></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+  m \star k = 
+  \begin{cases}
+    \text{Nothing} \quad &amp; \text{if } m = \text{Nothing}\\
+    k\,x                 &amp; \text{if } m = \text{Just}\,x
+  \end{cases}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.75em;"></span><span class="strut bottom" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">&#x22C6;</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mrel">=</span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">N</span><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">i</span><span class="mord">n</span><span class="mord" style="margin-right:0.01389em;">g</span></span><span class="mord mspace quad"></span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">i</span><span class="mord" style="margin-right:0.07778em;">f</span><span class="mord mspace">&#xA0;</span></span><span class="mord mathit">m</span><span class="mrel">=</span><span class="text mord textstyle uncramped"><span class="mord">N</span><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">i</span><span class="mord">n</span><span class="mord" style="margin-right:0.01389em;">g</span></span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">i</span><span class="mord" style="margin-right:0.07778em;">f</span><span class="mord mspace">&#xA0;</span></span><span class="mord mathit">m</span><span class="mrel">=</span><span class="text mord textstyle uncramped"><span class="mord">J</span><span class="mord">u</span><span class="mord">s</span><span class="mord">t</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">x</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+</li>
+</ul>
+<hr>
+<h1 id="using-the-monad">Using the Monad</h1>
+<ul>
+<li><p>Our division operator will need to be ready for division by zero. Let <code>/</code> be
+the usual division operator. So define </p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">s</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">/</mi></mtext><mo>:</mo><mo>:</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext><mo>&#x2192;</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mtext></mrow><annotation encoding="application/x-tex">
+  \text{safe/} :: \text{Maybe Int} \to \text{Maybe Int} \to \text{Maybe Int}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">s</span><span class="mord">a</span><span class="mord" style="margin-right:0.07778em;">f</span><span class="mord">e</span><span class="mord">/</span></span><span class="mrel">:</span><span class="mrel">:</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span><span class="mord mspace">&#xA0;</span><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span><span class="mord mspace">&#xA0;</span><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span><span class="mord mspace">&#xA0;</span><span class="mord">I</span><span class="mord">n</span><span class="mord">t</span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">s</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">/</mi></mtext><mspace width="0.16667em"></mspace><mi>m</mi><mspace width="0.16667em"></mspace><mi>n</mi><mo>=</mo><mi>m</mi><mo>&#x22C6;</mo><mi>&#x3BB;</mi><mi>x</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>n</mi><mo>&#x22C6;</mo><mi>&#x3BB;</mi><mi>y</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">g</mi></mtext><mspace width="1em"></mspace></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi></mtext><mi>x</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd><mrow><mtext><mi mathvariant="normal">J</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mtext><mspace width="0.16667em"></mspace><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow></mtd><mtd><mrow><mtext><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">w</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mtext></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+  \text{safe/}\,m\,n =
+  m \star \lambda x.\, n \star \lambda y.\,
+  \begin{cases}
+    \text{Nothing} \quad     &amp; \text{if} x = 0\\
+    \text{Just}\,\frac{y}{x} &amp; \text{otherwise}
+  \end{cases}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.75em;"></span><span class="strut bottom" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">s</span><span class="mord">a</span><span class="mord" style="margin-right:0.07778em;">f</span><span class="mord">e</span><span class="mord">/</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">m</span><span class="mord mspace thinspace"></span><span class="mord mathit">n</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mbin">&#x22C6;</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit">x</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit">n</span><span class="mbin">&#x22C6;</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">N</span><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">i</span><span class="mord">n</span><span class="mord" style="margin-right:0.01389em;">g</span></span><span class="mord mspace quad"></span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">J</span><span class="mord">u</span><span class="mord">s</span><span class="mord">t</span></span><span class="mord mspace thinspace"></span><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.44610799999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">i</span><span class="mord" style="margin-right:0.07778em;">f</span></span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord">0</span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">o</span><span class="mord">t</span><span class="mord">h</span><span class="mord">e</span><span class="mord">r</span><span class="mord" style="margin-right:0.01389em;">w</span><span class="mord">i</span><span class="mord">s</span><span class="mord">e</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+</li>
+</ul>
+<hr>
+<h1 id="generalizing-this-combinatorial-strategy">Generalizing This Combinatorial Strategy</h1>
+<ul>
+<li><p>For the other operators, we write a general lifting function that lifts the
+operators into the monadic computation.</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">p</mi><mn>2</mn></mtext><mo>:</mo><mo>:</mo><mo>(</mo><mi>a</mi><mo>&#x2192;</mo><mi>b</mi><mo>&#x2192;</mo><mi>c</mi><mo>)</mo><mo>&#x2192;</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi></mtext><mspace width="0.16667em"></mspace><mi>a</mi><mo>&#x2192;</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi></mtext><mspace width="0.16667em"></mspace><mi>b</mi><mo>&#x2192;</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">e</mi></mtext><mspace width="0.16667em"></mspace><mi>c</mi></mrow><annotation encoding="application/x-tex">
+  \text{map2} ::
+  (a \to b \to c) \to \text{Maybe}\,a \to \text{Maybe}\,b \to \text{Maybe}\,c
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">m</span><span class="mord">a</span><span class="mord">p</span><span class="mord">2</span></span><span class="mrel">:</span><span class="mrel">:</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mrel">&#x2192;</span><span class="mord mathit">b</span><span class="mrel">&#x2192;</span><span class="mord mathit">c</span><span class="mclose">)</span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">a</span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">b</span><span class="mrel">&#x2192;</span><span class="text mord textstyle uncramped"><span class="mord">M</span><span class="mord">a</span><span class="mord" style="margin-right:0.01389em;">y</span><span class="mord">b</span><span class="mord">e</span></span><span class="mord mspace thinspace"></span><span class="mord mathit">c</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">p</mi><mn>2</mn></mtext><mspace width="0.16667em"></mspace><mi>f</mi><mspace width="0.16667em"></mspace><mi>u</mi><mspace width="0.16667em"></mspace><mi>v</mi><mo>=</mo><mi>u</mi><mo>&#x22C6;</mo><mi>&#x3BB;</mi><mi>x</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>v</mi><mo>&#x22C6;</mo><mi>&#x3BB;</mi><mi>y</mi><mi mathvariant="normal">.</mi><mspace width="0.16667em"></mspace><mi>&#x3B7;</mi><mspace width="0.16667em"></mspace><mo>(</mo><mi>f</mi><mi>x</mi><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">
+  \text{map2}\,f\,u\,v =
+  u \star \lambda x.\, v \star \lambda y.\, \eta\,(f x y)
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="text mord textstyle uncramped"><span class="mord">m</span><span class="mord">a</span><span class="mord">p</span><span class="mord">2</span></span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mspace thinspace"></span><span class="mord mathit">u</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mrel">=</span><span class="mord mathit">u</span><span class="mbin">&#x22C6;</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit">x</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mbin">&#x22C6;</span><span class="mord mathit">&#x3BB;</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mspace thinspace"></span><span class="mord mathit" style="margin-right:0.03588em;">&#x3B7;</span><span class="mord mspace thinspace"></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">x</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
+</li>
+</ul>
+<hr>
+<h1 id="building-a-sentence">Building a Sentence</h1>
+<ul>
+<li><p>Now we can compose our safe-division computation as</p>
+<pre><code>            +----------------------------------+               
+            |                                  |               
+            |                                  |               
+    +-------+---------+               +--------+---------+   
+    |                 |               |                  |   
+    |                 |               |                  |   
+   &#x3B7; 2          +-----+------+     map2 (==)            &#x3B7; 5   
+                |            |
+                |            |
+             map2 (+)       &#x3B7; 3  
+</code></pre></li>
+</ul>
+<ul>
+<li>Smoothly evaluates to <code>Just True</code></li>
+</ul>
+<hr>
+<h1 id="putting-the-monad-to-work">Putting the Monad to Work</h1>
+<ul>
+<li><p>Let&apos;s see what happens when we try division by zero:</p>
+<pre><code class="lang-haskell">  (unit <span class="hljs-number">4</span>) (map2 +) ((unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)) (map2 =) (unit <span class="hljs-number">3</span>)
+
+  (unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)
+  ~~&gt; (<span class="hljs-type">Just</span> <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (<span class="hljs-type">Just</span> <span class="hljs-number">0</span>)
+  ~~&gt; <span class="hljs-type">Nothing</span>
+
+  (unit <span class="hljs-number">4</span>) (map2 +) ((unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)) (map2 =) (unit <span class="hljs-number">3</span>)
+  ~~&gt; (<span class="hljs-type">Just</span> <span class="hljs-number">4</span>) (map2 +) ((unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)) (map2 =) (unit <span class="hljs-number">3</span>)
+  ~~&gt; (<span class="hljs-type">Just</span> <span class="hljs-number">4</span>) &gt;&gt;= (\x. ((unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)) &gt;&gt;= (\y. unit (+ x y)))
+  ~~&gt; ((unit <span class="hljs-number">8</span>) <span class="hljs-keyword">safe</span>/ (unit <span class="hljs-number">0</span>)) &gt;&gt;= (\y. unit (+ <span class="hljs-number">4</span> y)))
+  ~~&gt; <span class="hljs-type">Nothing</span> &gt;&gt;= (\y. unit (+ <span class="hljs-number">4</span> y))
+  ~~&gt; <span class="hljs-type">Nothing</span>
+</code></pre>
+</li>
+</ul>
+<p>[Draw tree diagram with plumbing around the edge]</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../intro/types.html" class="navigation navigation-prev " aria-label="Previous page: Types, Type Classes, and Monads"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../monad-examps/index.html" class="navigation navigation-next " aria-label="Next page: Monads, More Examples"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
