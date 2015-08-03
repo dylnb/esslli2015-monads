@@ -44,7 +44,7 @@
     <body>
         
         
-    <div class="book" data-level="1.2" data-basepath=".." data-revision="Mon Aug 03 2015 16:22:18 GMT+0200 (CEST)">
+    <div class="book" data-level="1.2" data-basepath=".." data-revision="Mon Aug 03 2015 16:48:18 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -471,7 +471,8 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="the-maybe-monad-presupposition-and-its-failures">The Maybe Monad: Presupposition and its Failures</h1>
+                        <!-- λ ◊ ≠ ∃ Λ ∀ ≡ α β γ ρ ω φ ψ Ω ○ μ η δ ζ ξ ⋆ ★ • ∙ ● ⚫ 𝟎 𝟏 𝟐 𝟘 𝟙 𝟚 𝟬 𝟭 𝟮 ⇧ (U+2e17) ¢ -->
+<h1 id="the-maybe-monad-presupposition-and-its-failures">The Maybe Monad: Presupposition and its Failures</h1>
 <ul>
 <li><p>As a first example of a monad in action, we&apos;ll need a simple language that we
 need to evaluate.  We&apos;ll start with arithmetic, but move quickly to natural
@@ -613,6 +614,54 @@ operators into the monadic computation.</p>
 </li>
 </ul>
 <p>[Draw tree diagram with plumbing around the edge]</p>
+<hr>
+<h1 id="a-natural-language-application-of-the-maybe-monad">A natural language application of the Maybe monad</h1>
+<p>Finding a application for the Maybe monad in natural language is not
+hard.</p>
+<ul>
+<li><p>We already have expressions and sentences.  Instead of </p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2 + 3 = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">2</span><span class="mbin">+</span><span class="mord">3</span><span class="mrel">=</span><span class="mord">5</span></span></span></span></p>
+<p>We want</p>
+<p>Ann and Bill saw Carl.</p>
+</li>
+<li><p>All we need is the lingusitic equivalent of division by zero.</p>
+</li>
+</ul>
+<hr>
+<h1 id="presuppositions">Presuppositions</h1>
+<pre><code>* The King of France is bald.  [There is no King of France.]
+* Ann&apos;s meerkat is sick.  [Not everyone owns a meerkat.]
+* Ann finally realized that the world is round.
+* etc.
+</code></pre><ul>
+<li><p>For now, assume that DPs denote (refer to) objects. </p>
+</li>
+<li><p>Computing reference is itself compositional, but assume we have a
+black box named R.</p>
+<ul>
+<li>R(&quot;Ann&quot;) = ann</li>
+<li>R(&quot;The President of the US&quot;) = obama</li>
+<li>R(&quot;The King of France&quot;) = <em>__</em>?</li>
+</ul>
+</li>
+</ul>
+<p><a href="../Readings/kaplan-plexy.pdf">Kaplan on plexy</a></p>
+<hr>
+<h1 id="let-r-map-dps-not-to-objects-of-type-ent-but-to-maybe-ent">Let R map DPs not to objects of type Ent, but to Maybe Ent:</h1>
+<ul>
+<li>R(&quot;Ann&quot;) = unit ann = Just ann</li>
+<li>R(&quot;The President of the US&quot;) = unit obama = Just obama</li>
+<li><p>R(&quot;The King of France&quot;) = Nothing</p>
+<p>Then once we lift into the monad, we have</p>
+</li>
+<li><p>Ann saw Bill = Just True</p>
+</li>
+<li>Ann saw the President of the US = Just False.</li>
+<li><p>Ann saw the King of France = Nothing</p>
+<p>Just to be clear, evaluating &quot;Ann saw Bill&quot; means evaluating </p>
+<p><code>(R Ann) (map2 saw) (R Bill)</code></p>
+</li>
+</ul>
 
                     
                     </section>
