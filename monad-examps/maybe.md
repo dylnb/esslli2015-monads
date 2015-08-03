@@ -203,20 +203,20 @@ hard.
 * Computing reference is itself compositional, but assume we have a
   black box named R.
 
-  R("Ann") = ann
-  R("The President of the US") = obama
-  R("The King of France") = ____?
+  * R("Ann") = ann
+  * R("The President of the US") = obama
+  * R("The King of France") = ____?
 
 ---
 
 # Let R map DPs not to objects of type Ent, but to Maybe Ent:
 
-  R("Ann") = Just ann
-  R("The President of the US") = Just obama
-  R("The King of France") = Nothing
+  * R("Ann") = Just ann
+  * R("The President of the US") = Just obama
+  * R("The King of France") = Nothing
 
   Then once we lift into the monad, we have
 
-  Ann saw Bill.   Just True
-  Ann saw the President of the US.  Just False.
-  Ann saw the King of France.  Nothing
+  * Ann saw Bill.   Just True
+  * Ann saw the President of the US.  Just False.
+  * Ann saw the King of France.  Nothing
