@@ -142,3 +142,9 @@ licensing, and more.
 which integrates a number of monads into a sophisticated
 medium-coverage grammar will be discussed in some detail in the course
 on Thursday.
+
+* Focus
+  * Rooth 1985
+  * [Bekki and Asai](../Readings/bekki-asai-covert-movement.pdf)
+  * Charlow's dissertation (see above)
+  * Youyou Cong's recent work
