@@ -92,8 +92,7 @@
 
 # Using the Monad
 
-* Our division operator will need to be ready for division by zero. Let `/` be
-  the usual division operator. So define 
+* Our division operator will need to be ready for division by zero. 
 
   $$
   \text{safe/} :: \text{Maybe Int} \to \text{Maybe Int} \to \text{Maybe Int}
@@ -103,8 +102,8 @@
   \text{safe/}\,m\,n =
   m \star \lambda x.\, n \star \lambda y.\,
   \begin{cases}
-    \text{Nothing} \quad     & \text{if} x = 0\\
-    \text{Just}\,\frac{y}{x} & \text{otherwise}
+    \text{Nothing} \quad     & \text{if } x = 0\\
+    \text{Just}\,y/x & \text{otherwise}
   \end{cases}
   $$
 
@@ -123,7 +122,7 @@
 
   $$
   \text{map2}\,f\,u\,v =
-  u \star \lambda x.\, v \star \lambda y.\, \eta\,(f x y)
+  u \star \lambda x.\, v \star \lambda y.\, \eta\,(f\,x\,y)
   $$
 
 
@@ -140,7 +139,7 @@
           +-------+---------+               +--------+---------+   
           |                 |               |                  |   
           |                 |               |                  |   
-         η 2          +-----+------+     map2 (==)            η 5   
+         η 2          +-----+------+     map2 (=)             η 5   
                       |            |
                       |            |
                    map2 (+)       η 3  
