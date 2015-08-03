@@ -93,7 +93,9 @@ natural language.
   speaker to certain attitudes independently of the truth of the
   statement in which it occurs.  
 
-  See Asudeh and Giorgolo's 2015 ESSLLI course (second week)!
+  [See Asudeh and Giorgolo's 2015 ESSLLI course (second week)!]
+  (http://parles.upf.edu/llocs/esslli/content/natural-language-semantics-enriched-meanings)
+
   
 So the modular techniques developed for functional programming can be
 applied directly to many familiar problems in the interpretation of
