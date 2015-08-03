@@ -208,12 +208,14 @@ hard.
   * R("The President of the US") = obama
   * R("The King of France") = ____?
 
+[Kaplan on plexy(kaplen-plexy.pdf)]
+
 ---
 
 # Let R map DPs not to objects of type Ent, but to Maybe Ent:
 
-  * R("Ann") = Just ann
-  * R("The President of the US") = Just obama
+  * R("Ann") = unit ann = Just ann
+  * R("The President of the US") = unit obama = Just obama
   * R("The King of France") = Nothing
 
   Then once we lift into the monad, we have
@@ -224,5 +226,5 @@ hard.
 
   Just to be clear, evaluating "Ann saw Bill" means evaluating 
 
-  `map2 saw (R Ann) (R Bill)`
+  `(R Ann) (map2 saw) (R Bill)`
 
