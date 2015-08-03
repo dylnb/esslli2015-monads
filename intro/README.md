@@ -101,6 +101,22 @@ So the modular techniques developed for functional programming can be
 applied directly to many familiar problems in the interpretation of
 natural language.
 
+---
+### Side effects in natural language
+
+* Exactly two of the three frogs are in the pond.
+* It is in the tree.
+
+---
+
+* Exactly two of the three frogs are in the pond.
+* So exactly one of the three frogs is not in the pond.
+* It is in the tree.
+
+Side effect: setting up a discourse referent.
+
+---
+
 Although there is no limit to the variety of monads, several specific
 monads have proven to be useful, and have names:
 
