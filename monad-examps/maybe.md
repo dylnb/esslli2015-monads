@@ -1,3 +1,4 @@
+<!-- λ ◊ ≠ ∃ Λ ∀ ≡ α β γ ρ ω φ ψ Ω ○ μ η δ ζ ξ ⋆ ★ • ∙ ● ⚫ 𝟎 𝟏 𝟐 𝟘 𝟙 𝟚 𝟬 𝟭 𝟮 ⇧ (U+2e17) ¢ -->
 # The Maybe Monad: Presupposition and its Failures
 
 * As a first example of a monad in action, we'll need a simple language that we
@@ -217,6 +218,11 @@ hard.
 
   Then once we lift into the monad, we have
 
-  * Ann saw Bill.   Just True
-  * Ann saw the President of the US.  Just False.
-  * Ann saw the King of France.  Nothing
+  * Ann saw Bill = Just True
+  * Ann saw the President of the US = Just False.
+  * Ann saw the King of France = Nothing
+
+  Just to be clear, evaluating "Ann saw Bill" means evaluating 
+
+  `map2 saw (R Ann) (R Bill)`
+
