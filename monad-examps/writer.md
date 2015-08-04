@@ -30,8 +30,8 @@
       sentence
     * and a background component which just hangs along for the ride
 
-* $$\langle$$ The concept structures the semantics of languages, The concept
-  arises from category theory $$\rangle$$
+* The concept structures the semantics of languages, The concept
+  arises from category theory
 
 
 ---
@@ -44,9 +44,9 @@
   applied to structure the semantics of programming languages, which Montague
   thought were just like English*
 
-* $$\langle$$ The concept structures the semantics of languages, The concept
+* The concept structures the semantics of languages, The concept
   arises from category theory **and** Montague thinks programming languages are
-  like English$$\rangle$$
+  like English
 
 
 ---

@@ -53,4 +53,4 @@ m >>= k = \r -> k (m r) r
 
 * In other words, for lexical nodes \alpha, [[\alpha]] =  `return`
   [[\alpha]], and for nonterminal nodes \alpha, [[\alpha]] =
-  [[\beta]]`>>=` [[\gamma]]
+  [[\beta]]`>>=` \lambda y\lambda g.[[\gamma]] g y
