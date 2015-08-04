@@ -45,6 +45,9 @@ We'll write `bind m k` as `m >>= k`
 
 Yes, it's a monad!
 
+
+[Kaplan on plexy](../Readings/kaplen-plexy.pdf)
+
 [draw tree with plumbing]        
 
 ---
