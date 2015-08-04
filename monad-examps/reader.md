@@ -29,7 +29,7 @@
 ---
 
 
-```haskell
+```
 Reader r a = r -> a
 
 return x = \r -> x

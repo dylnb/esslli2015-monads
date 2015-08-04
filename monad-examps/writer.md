@@ -52,7 +52,7 @@
 ---
 
 
-```haskell
+```
 Writer w a = (a, w)
 
 return x = (x, ∅)

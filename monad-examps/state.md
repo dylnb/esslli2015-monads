@@ -25,7 +25,7 @@
 * We just need some way of tracking updates to the discourse state, *alongside*
   compositional evaluation
 
-```haskell
+```
 State s a = s -> (a, s)
 
 return x = \s -> (x, s)
