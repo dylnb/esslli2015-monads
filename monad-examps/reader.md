@@ -41,16 +41,16 @@ m >>= k = \r -> k (m r) r
 
 * This looks pretty familiar!
 
-> If $$\alpha$$ is a terminal node occupied by a lexical item, then
-> for any assignment $$g$$, $$[\![\alpha]\!]^g = [\![\alpha]\!]$$
+> If $\alpha$ is a terminal node occupied by a lexical item, then
+> for any assignment $g$, $[\![\alpha]\!]^g = [\![\alpha]\!]$
 > 
-> If $$\alpha$$ is a branching node and $$\{\beta, \gamma\}$$ the set of its
-> daughters, then, for any assignment $$g$$, [...]
-> $$[\![\alpha]\!]^g = [\![\beta]\!]^g([\![\gamma]\!]^g)$$
+> If $\alpha$ is a branching node and $\{\beta, \gamma\}$ the set of its
+> daughters, then, for any assignment $g$, [...]
+> $[\![\alpha]\!]^g = [\![\beta]\!]^g([\![\gamma]\!]^g)$
 
 -- Heim and Kratzer, *Semantics in Generative Grammar*
 
 
-* In other words, for lexical nodes $$\alpha$$, $$[\![\alpha]\!] = $$ `return`
-  $$[\![\alpha]\!]$$, and for nonterminal nodes $$\alpha$$, $$[\![\alpha]\!] =
-  [\![\beta]\!]$$`>>=` $$[\![\gamma]\!]$$
+* In other words, for lexical nodes $\alpha$, $[\![\alpha]\!] = $ `return`
+  $[\![\alpha]\!]$, and for nonterminal nodes $\alpha$, $[\![\alpha]\!] =
+  [\![\beta]\!]$`>>=` $[\![\gamma]\!]$
