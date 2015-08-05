@@ -1,8 +1,6 @@
 <!-- λ ◊ ≠ ∃ Λ ∀ ≡ α β γ ρ ω φ ψ Ω ○ μ η δ ζ ξ ⋆ ★ • ∙ ● ⚫ 𝟎 𝟏 𝟐 𝟘 𝟙 𝟚 𝟬 𝟭 𝟮 ⇧ (U+2e17) ¢ -->
 # Groenendijk, Stokhof, and Veltman 1996
 
-[[!toc levels=2]]
-
 ## Doing things with monads (an extended application): Groenendijk, Stokhof and Veltman's *Coreference and Modality*
 
 GSV are interested in developing and establishing a reasonable theory
@@ -50,7 +48,7 @@ The fragment in this paper is unusually elegant.  We'll present it on
 its own terms, with the exception that we will not use GSV's "pegs".
 See the discussion below below concerning pegs for an explanation.
 After presenting the paper, we'll re-engineer the fragment using
-explicit monads.
+explicit monads.  So think about where you would put monadic layers.
 
 * an evaluation point, "a possibility": (world, assignment function)
 
@@ -87,15 +85,20 @@ Existential quantification is somewhat intricate.
 
 Here's the recipe: 
 
-        * given a starting infostate s, choose an object a
+* given a starting infostate s, choose an object a
 from the domain of discourse.  
-        * Construct a modified infostate s' by
+
+* Construct a modified infostate s' by
 adjusting the assignment function of each possibility so as to map the
 variable x to a.  
-        * Then update s' with φ.  
-        * Finally, take the union over
+
+* Then update s' with φ.  
+
+* Finally, take the union over
 the results of doing this for every object a in the domain of
 discourse.  
+
+And here is the definition of truth:
 
 * Truth: if updating φ with the information state that contains only
   the possibility i returns the empty information state, then not φ is
