@@ -3,6 +3,8 @@
 
 ## Doing things with monads (an extended application): Groenendijk, Stokhof and Veltman's *Coreference and Modality*
 
+Here is the paper: [GSV](../Readings/GSV-coreference-and-modality.pdf)
+
 GSV are interested in developing and establishing a reasonable theory
 of discourse update.  One way of looking at this paper is like this:
 
