@@ -25,6 +25,19 @@
 * We just need some way of tracking updates to the discourse state, *alongside*
   compositional evaluation
 
+* I.e., the generation of and sensitivity to discourse referents is a side
+  effect of evaluating the meaning of a sentence
+
+
+---
+
+
+* So we want a dynamic monad; it'll need to read in some sort of environment
+  (the current state of the discourse), and write out some sort of new
+  environment for future expressions that might depend on it
+
+* So we'll just glue our reader to our writer
+
 ```
 State s a = s -> (a, s)
 
@@ -32,3 +45,9 @@ return x = \s -> (x, s)
 m >>= k = \s -> k x s'
   where (x, s') = m s
 ```
+
+
+---
+
+
+* But as Hans can tell us

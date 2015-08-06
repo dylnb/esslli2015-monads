@@ -3,9 +3,10 @@
 
 import Prelude hiding (log)
 import Control.Monad.Identity
-import Control.Monad.List
+import Control.Monad.Except
 import Control.Monad.Reader
 import Control.Monad.Writer
+import Control.Monad.List
 import Control.Monad.State
 import Control.Monad.RWS
 import Control.Monad.Cont
@@ -49,17 +50,17 @@ mx <\> mf = mx >>= \x ->
               mf >>= \f ->
                 return (f x)
 
-sen1 = john <\> (likes </> mary)
-sen2 = mary <\> (likes </> john)
+sen1a = john <\> (likes </> mary)
+sen1b = mary <\> (likes </> john)
 
-:type sen1
-:type sen2
+:type sen1a
+:type sen1b
 
-runIdentity sen1
-runIdentity sen2
+runIdentity sen1a
+runIdentity sen1b
 
-runPair sen1
-runList sen1
+runPair sen1a
+runList sen1a
 
 data Context = Context {speaker :: E, time :: Int}
 
@@ -74,94 +75,106 @@ now :: MonadReader Context m => m Int
 now = asks time
      -- Reader (\context -> time context)
 
-sen5 = mary <\> (likes </> me)
+sen2 = mary <\> (likes </> me)
 
-:type sen5
+:type sen2
 
-runReader sen5 thisContext
+runReader sen2 thisContext
 -- thisContext = {speaker = John, time = 0}
 
 log :: (Show a, MonadWriter String m) => m a -> m a
 log m = m >>= (\x -> writer (x, "Log " ++ show x ++ ". "))
 
-sen2 = log mary <\> (likes </> log john)
+sen3 = log mary <\> (likes </> log john)
 
-:type sen2
+:type sen3
 
-runWriter sen2
+runWriter sen3
 
-senBlah = mary <\> (likes </> log me)
+sen4 = mary <\> (likes </> log me)
 
-:type senBlah
+:type sen4
 
-runWriter (runReaderT senBlah thisContext)
+runWriter (runReaderT sen4 thisContext)
 
 someone :: MonadPlus m => m E
 someone = john `mplus` mary
 
-sen3 = someone <\> (likes </> mary)
+sen5a = someone <\> (likes </> mary)
 
-:type sen3
+:type sen5a
 
-runList sen3
+runList sen5a
 
-sen4 = log someone <\> (likes </> john)
+sen5b = log someone <\> (likes </> john)
 
-:type sen4
+:type sen5b
 
-runList (runWriterT sen4)
+runList (runWriterT sen5b)
 
 type Stack = List E
 
-discourseInitial :: Stack
+discourseInitial, justMentionedMary :: Stack
 discourseInitial = []
-
-justMentionedJohn :: Stack
-justMentionedJohn = [John]
+justMentionedMary = [Mary]
 
 pro :: MonadState Stack m => m E
 pro = gets head
 
-sen6 = mary <\> (likes </> pro)
+sen6a = mary <\> (likes </> pro)
 
-runState sen6 justMentionedJohn
--- justMentionedJohn = [John]
+runState sen6a justMentionedMary
+-- justMentionedMary = [Mary]
 
-runState sen6 discourseInitial
+runState sen6a discourseInitial
 -- discourseInitial = []
+
+proM :: (MonadError String m, MonadState Stack m) => m E
+proM = get >>= safeLookup
+  where safeLookup s =
+          if null s
+              then throwError "Who are we talking about here?"
+              else return (head s)
+
+sen6b = mary <\> (likes </> proM)
+
+:type sen6b
+
+runState (runExceptT sen6b) justMentionedMary
+runState (runExceptT sen6b) discourseInitial
 
 push :: MonadState Stack m => m E -> m E
 push m = m >>= \x -> state (\s -> (x, x:s))
     -- = m >>= \x -> modify (x:) >>= \_ return x
 
-sen7 = push mary <\> (likes </> pro)
+sen7a = push mary <\> (likes </> pro)
 
-:type sen7
+:type sen7a
 
-runState sen7 justMentionedJohn
+runState sen7a justMentionedMary
 
-sen65 = mary <\> (likes </> log pro)
+sen7b = mary <\> (likes </> log pro)
 
-:type sen65
+:type sen7b
 
-runWriter (runStateT sen65 justMentionedJohn)
+runWriter (runStateT sen7b justMentionedMary)
 
-sen8 = push someone <\> (likes </> pro)
+sen8a = push someone <\> (likes </> pro)
 
-:type sen8
+:type sen8a
 
-runList (runStateT sen8 discourseInitial)
+runList (runStateT sen8a discourseInitial)
 
-sen9 = push someone <\> (likes </> log pro)
+sen8b = push someone <\> (likes </> log pro)
 
-:type sen9
+:type sen8b
 
-runList (runRWST sen9 thisContext discourseInitial)
+runList (runRWST sen8b thisContext discourseInitial)
 
-sen10 :: (MonadPlus m, MonadRWS Context String Stack m) => m Bool
-sen10 = push someone <\> (likes </> log me)
+sen8c :: (MonadPlus m, MonadRWS Context String Stack m) => m Bool
+sen8c = push someone <\> (likes </> log me)
 
-runList (runRWST sen10 thisContext discourseInitial)
+runList (runRWST sen8c thisContext discourseInitial)
 
 everyone :: Monad m => ContT Bool m E
 everyone = ContT (\k -> k John `andM` k Mary)
@@ -170,29 +183,29 @@ everyone = ContT (\k -> k John `andM` k Mary)
 lower :: Monad m => ContT a m a -> m a
 lower t = runContT t return
 
-sen11 = everyone <\> (likes </> mary)
+sen9a = everyone <\> (likes </> mary)
 
-:type sen11
+:type sen9a
 
-runIdentity (lower sen11)
+runIdentity (lower sen9a)
 
-sen111 = mary <\> (likes </> everyone)
+sen9b = mary <\> (likes </> everyone)
 
-:type sen111
+:type sen9b
 
-runIdentity (lower sen111)
+runIdentity (lower sen9b)
 
-sen12 :: MonadState Stack m => ContT Bool m Bool
-sen12 =  push everyone <\> (likes </> mary)
+sen10a :: MonadState Stack m => ContT Bool m Bool
+sen10a =  push everyone <\> (likes </> mary)
 
-runState (lower sen12) discourseInitial
+runState (lower sen10a) discourseInitial
 
-sen13 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
-sen13 = log someone <\> (likes </> push everyone)
+sen10b :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
+sen10b = log someone <\> (likes </> push everyone)
 
-runList (runWriterT (runStateT (lower sen13) discourseInitial))
+runList (runWriterT (runStateT (lower sen10b) discourseInitial))
 
-sen14 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
-sen14 = push everyone <\> (likes </> log someone)
+sen10c :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
+sen10c = push everyone <\> (likes </> log someone)
 
-runList (runWriterT (runStateT (lower sen14) discourseInitial))
+runList (runWriterT (runStateT (lower sen10c) discourseInitial))

@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances, MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies, UndecidableInstances #-}
 
-module GrammarUtils where
+module DemoUtils where
 
 import Control.Monad.Writer
 import Control.Monad.Cont

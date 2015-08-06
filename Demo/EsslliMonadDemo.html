@@ -194,9 +194,10 @@ div#notebook {
 
 <span class="kn">import</span> <span class="nn">Prelude</span> <span class="n">hiding</span> <span class="p">(</span><span class="n">log</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.Identity</span>
-<span class="kn">import</span> <span class="nn">Control.Monad.List</span>
+<span class="kn">import</span> <span class="nn">Control.Monad.Except</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.Reader</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.Writer</span>
+<span class="kn">import</span> <span class="nn">Control.Monad.List</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.State</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.RWS</span>
 <span class="kn">import</span> <span class="nn">Control.Monad.Cont</span>
@@ -866,11 +867,11 @@ up in the usual type-driven way; that is, we choose the slash that makes the typ
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen1</span> <span class="o">=</span> <span class="n">john</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
-<span class="n">sen2</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">john</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen1a</span> <span class="o">=</span> <span class="n">john</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
+<span class="n">sen1b</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">john</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -893,11 +894,11 @@ based on the types of the parts and the mode of composition</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen1</span>
-<span class="p">:</span><span class="nb">type</span> <span class="n">sen2</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen1a</span>
+<span class="p">:</span><span class="nb">type</span> <span class="n">sen1b</span>
 </pre></div>
 
 </div>
@@ -1007,7 +1008,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen1 :: forall (m :: * -> *). Monad m => m Bool</span>
+</style><span class='get-type'>sen1a :: forall (m :: * -> *). Monad m => m Bool</span>
 </div>
 
 </div>
@@ -1111,7 +1112,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen2 :: forall (m :: * -> *). Monad m => m Bool</span>
+</style><span class='get-type'>sen1b :: forall (m :: * -> *). Monad m => m Bool</span>
 </div>
 
 </div>
@@ -1145,11 +1146,11 @@ types) to apply the pieces to one another</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="n">sen1</span>
-<span class="n">runIdentity</span> <span class="n">sen2</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="n">sen1a</span>
+<span class="n">runIdentity</span> <span class="n">sen1b</span>
 </pre></div>
 
 </div>
@@ -1184,11 +1185,11 @@ types) to apply the pieces to one another</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runPair</span> <span class="n">sen1</span>
-<span class="n">runList</span> <span class="n">sen1</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runPair</span> <span class="n">sen1a</span>
+<span class="n">runList</span> <span class="n">sen1a</span>
 </pre></div>
 
 </div>
@@ -1250,7 +1251,7 @@ testing in which John is the speaker and the time is 0 (whatever that means)</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">data</span> <span class="n">Context</span> <span class="o">=</span> <span class="n">Context</span> <span class="p">{</span><span class="n">speaker</span> <span class="p">::</span> <span class="n">E</span><span class="p">,</span> <span class="n">time</span> <span class="p">::</span> <span class="n">Int</span><span class="p">}</span>
@@ -1287,7 +1288,7 @@ identity function</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">me</span> <span class="p">::</span> <span class="n">MonadReader</span> <span class="n">Context</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span>
@@ -1324,10 +1325,10 @@ it</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen5</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">me</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen2</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">me</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1337,236 +1338,7 @@ it</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen5</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-<style>/*
-Custom IHaskell CSS.
-*/
-
-/* Styles used for the Hoogle display in the pager */
-.hoogle-doc {
-    display: block;
-    padding-bottom: 1.3em;
-    padding-left: 0.4em;
-}
-.hoogle-code {
-    display: block;
-    font-family: monospace;
-    white-space: pre;
-}
-.hoogle-text {
-    display: block;
-}
-.hoogle-name {
-    color: green;
-    font-weight: bold;
-}
-.hoogle-head {
-    font-weight: bold;
-}
-.hoogle-sub {
-    display: block;
-    margin-left: 0.4em;
-}
-.hoogle-package {
-    font-weight: bold;
-    font-style: italic;
-}
-.hoogle-module {
-    font-weight: bold;
-}
-.hoogle-class {
-    font-weight: bold;
-}
-
-/* Styles used for basic displays */
-.get-type {
-    color: green;
-    font-weight: bold;
-    font-family: monospace;
-    display: block;
-    white-space: pre-wrap;
-}
-
-.show-type {
-    color: green;
-    font-weight: bold;
-    font-family: monospace;
-    margin-left: 1em;
-}
-
-.mono {
-    font-family: monospace;
-    display: block;
-}
-
-.err-msg {
-    color: red;
-    font-style: italic;
-    font-family: monospace;
-    white-space: pre;
-    display: block;
-}
-
-#unshowable {
-    color: red;
-    font-weight: bold;
-}
-
-.err-msg.in.collapse {
-  padding-top: 0.7em;
-}
-
-/* Code that will get highlighted before it is highlighted */
-.highlight-code {
-    white-space: pre;
-    font-family: monospace;
-}
-
-/* Hlint styles */
-.suggestion-warning { 
-    font-weight: bold;
-    color: rgb(200, 130, 0);
-}
-.suggestion-error { 
-    font-weight: bold;
-    color: red;
-}
-.suggestion-name {
-    font-weight: bold;
-}
-</style><span class='get-type'>sen5 :: forall (m :: * -> *). MonadReader Context m => m Bool</span>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runReader</span> <span class="n">sen5</span> <span class="n">thisContext</span>
-<span class="o">--</span> <span class="n">thisContext</span> <span class="o">=</span> <span class="p">{</span><span class="n">speaker</span> <span class="o">=</span> <span class="n">John</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>False</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Another-Effect:-Logging">Another Effect: Logging<a class="anchor-link" href="#Another-Effect:-Logging">&#182;</a></h2><ul>
-<li><p>The flipside of context-sensitivity is context-generativity. Some lexical items seem to
-contribute content in a separate "dimension" of meaning, like the apposatives and 
-expressives</p>
-</li>
-<li><p>For this, it is useful to imagine them as "writing" out their not-at-issue meanings
-into some separate denotational coordinate that doesn't get targeted by other semantic
-operations don't touch</p>
-</li>
-<li><p>More simply, it can be useful as researchers to <em>trace</em> the thread of composition, to 
-make sure we have a handle on what's happening when</p>
-</li>
-<li><p>This is what we'll do now, with a <code>log</code> function that simply writes out the content of
-some constituent to a string that we pass alongside semantic evaluation</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">log</span> <span class="p">::</span> <span class="p">(</span><span class="n">Show</span> <span class="n">a</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="n">a</span>
-<span class="n">log</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> <span class="p">(</span>\<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">writer</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;Log &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="n">x</span> <span class="o">++</span> <span class="s">&quot;. &quot;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>As with the reader, there's another interface class called <code>MonadWriter</code> that
-side-content-generating monads implement. It comes with a few functions, one of which
-is <code>writer</code>, which lifts a pair containing a value and a side-note into the relevant
-monad.</p>
-</li>
-<li><p>In its simplest form --- the bare writer monad --- it is again an identity function</p>
-<p>$\texttt{writer} = \lambda m.\, \langle m_1, m_2 \rangle$</p>
-</li>
-</ul>
-<ul>
-<li>And that's it. We can now log nodes in the computation to inspect their values without
-mucking up any of the combinatorics</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen2</span> <span class="o">=</span> <span class="n">log</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">john</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen2</span>
@@ -1679,7 +1451,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen2 :: forall (m :: * -> *). MonadWriter String m => m Bool</span>
+</style><span class='get-type'>sen2 :: forall (m :: * -> *). MonadReader Context m => m Bool</span>
 </div>
 
 </div>
@@ -1690,10 +1462,11 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="n">sen2</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runReader</span> <span class="n">sen2</span> <span class="n">thisContext</span>
+<span class="o">--</span> <span class="n">thisContext</span> <span class="o">=</span> <span class="p">{</span><span class="n">speaker</span> <span class="o">=</span> <span class="n">John</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">}</span>
 </pre></div>
 
 </div>
@@ -1708,7 +1481,7 @@ Custom IHaskell CSS.
 
 
 <div class="output_text output_subarea ">
-<pre>(False,&quot;Log Mary. Log John. &quot;)</pre>
+<pre>False</pre>
 </div>
 
 </div>
@@ -1722,13 +1495,20 @@ Custom IHaskell CSS.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Combining-Effects:-Or,-Look-Who's-Talking">Combining Effects: Or, Look Who's Talking<a class="anchor-link" href="#Combining-Effects:-Or,-Look-Who's-Talking">&#182;</a></h2><ul>
-<li><p>We <em>could</em> have implemented <code>me</code> and <code>log</code> directly in the reader and writer monads,
-respectively. But we instead took advantage of Haskell's monad classes <code>MonadReader</code>
-and <code>MonadWriter</code> using the more generic context-querying and context-writing functions
-<code>ask</code> and <code>writer</code>. Now we're ready for the payoff.</p>
+<h2 id="Another-Effect:-Logging">Another Effect: Logging<a class="anchor-link" href="#Another-Effect:-Logging">&#182;</a></h2><ul>
+<li><p>The flipside of context-sensitivity is context-generativity. Some lexical items seem to
+contribute content in a separate "dimension" of meaning, like the apposatives and 
+expressives</p>
 </li>
-<li><p>There is no obstacle to doing both of these things at the same time!</p>
+<li><p>For this, it is useful to imagine them as "writing" out their not-at-issue meanings
+into some separate denotational coordinate that doesn't get targeted by other semantic
+operations don't touch</p>
+</li>
+<li><p>More simply, it can be useful as researchers to <em>trace</em> the thread of composition, to 
+make sure we have a handle on what's happening when</p>
+</li>
+<li><p>This is what we'll do now, with a <code>log</code> function that simply writes out the content of
+some constituent to a string that we pass alongside semantic evaluation</p>
 </li>
 </ul>
 
@@ -1737,232 +1517,11 @@ and <code>MonadWriter</code> using the more generic context-querying and context
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">senBlah</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">me</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">senBlah</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-<style>/*
-Custom IHaskell CSS.
-*/
-
-/* Styles used for the Hoogle display in the pager */
-.hoogle-doc {
-    display: block;
-    padding-bottom: 1.3em;
-    padding-left: 0.4em;
-}
-.hoogle-code {
-    display: block;
-    font-family: monospace;
-    white-space: pre;
-}
-.hoogle-text {
-    display: block;
-}
-.hoogle-name {
-    color: green;
-    font-weight: bold;
-}
-.hoogle-head {
-    font-weight: bold;
-}
-.hoogle-sub {
-    display: block;
-    margin-left: 0.4em;
-}
-.hoogle-package {
-    font-weight: bold;
-    font-style: italic;
-}
-.hoogle-module {
-    font-weight: bold;
-}
-.hoogle-class {
-    font-weight: bold;
-}
-
-/* Styles used for basic displays */
-.get-type {
-    color: green;
-    font-weight: bold;
-    font-family: monospace;
-    display: block;
-    white-space: pre-wrap;
-}
-
-.show-type {
-    color: green;
-    font-weight: bold;
-    font-family: monospace;
-    margin-left: 1em;
-}
-
-.mono {
-    font-family: monospace;
-    display: block;
-}
-
-.err-msg {
-    color: red;
-    font-style: italic;
-    font-family: monospace;
-    white-space: pre;
-    display: block;
-}
-
-#unshowable {
-    color: red;
-    font-weight: bold;
-}
-
-.err-msg.in.collapse {
-  padding-top: 0.7em;
-}
-
-/* Code that will get highlighted before it is highlighted */
-.highlight-code {
-    white-space: pre;
-    font-family: monospace;
-}
-
-/* Hlint styles */
-.suggestion-warning { 
-    font-weight: bold;
-    color: rgb(200, 130, 0);
-}
-.suggestion-error { 
-    font-weight: bold;
-    color: red;
-}
-.suggestion-name {
-    font-weight: bold;
-}
-</style><span class='get-type'>senBlah :: forall (m :: * -> *). (MonadWriter String m, MonadReader Context m) => m Bool</span>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>As the type signature says, we just need a monad <code>m</code> that implements <em>both</em> the
-reader and writer interfaces</p>
-</li>
-<li><p>The simplest such monad is called <code>ReaderT Context (Writer String)</code>. In
-pseudo-Haskell, that looks like this:</p>
-<p>$\texttt{ReaderT}\,r\,(\texttt{Writer}\,w)\,a := r \to a \ast w$</p>
-<p>$
-\begin{align<em>}
-\eta\,x &amp;= \lambda r.\, \langle x,\,\emptyset\rangle\
-m \star k &amp;= \lambda r.\, \langle y,\, w \diamond w'\rangle,\
-&amp;\hphantom{{}={}}\textsf{where }
-\langle x, w\rangle = m\,r\
-&amp;\hphantom{{}=\textsf{where }}\langle y, w'\rangle = k\,x\,r\
-\end{align</em>}
-$</p>
-</li>
-</ul>
-<ul>
-<li>To extract our results and effects from this type, we unwrap it in layers.
-(We'll try and make more sense out of this pattern later on when we get to
-monad transformers)</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="p">(</span><span class="n">runReaderT</span> <span class="n">senBlah</span> <span class="n">thisContext</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>(False,&quot;Log John. &quot;)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Alternatives-(aka-the-List-monad)">Alternatives (aka the List monad)<a class="anchor-link" href="#Alternatives-(aka-the-List-monad)">&#182;</a></h2><ul>
-<li><p>To handle denotations that encode disjunction, we call on another standard
-interface class, <code>MonadPlus</code>, which subcategorizes for monads that implement
-something like a union operator</p>
-</li>
-<li><p>The generic operator is called <code>mplus</code>, and the canonical <code>MonadPlus</code> instance
-is the list monad. It implements <code>mplus</code>, unsurprisingly, as concatenation</p>
-<p>$\texttt{mplus} = \lambda m\lambda n.\, m +\!\!\!\!+\, n$</p>
-</li>
-</ul>
-<ul>
-<li>From there, it is easy to give a denotation for indefinite DPs in terms
-of this monadic disjunction</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">someone</span> <span class="p">::</span> <span class="n">MonadPlus</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span>
-<span class="n">someone</span> <span class="o">=</span> <span class="n">john</span> <span class="err">`</span><span class="n">mplus</span><span class="err">`</span> <span class="n">mary</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">log</span> <span class="p">::</span> <span class="p">(</span><span class="n">Show</span> <span class="n">a</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="n">a</span>
+<span class="n">log</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> <span class="p">(</span>\<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">writer</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;Log &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="n">x</span> <span class="o">++</span> <span class="s">&quot;. &quot;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -1976,8 +1535,18 @@ of this monadic disjunction</li>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Remember that <code>john</code> here is the denotation of the name "John". It
-names the ambiguous function <code>return John</code> (in the list monad, <code>[John]</code>)</li>
+<li><p>As with the reader, there's another interface class called <code>MonadWriter</code> that
+side-content-generating monads implement. It comes with a few functions, one of which
+is <code>writer</code>, which lifts a pair containing a value and a side-note into the relevant
+monad.</p>
+</li>
+<li><p>In its simplest form --- the bare writer monad --- it is again an identity function</p>
+<p>$\texttt{writer} = \lambda m.\, \langle m_1, m_2 \rangle$</p>
+</li>
+</ul>
+<ul>
+<li>And that's it. We can now log nodes in the computation to inspect their values without
+mucking up any of the combinatorics</li>
 </ul>
 
 </div>
@@ -1985,10 +1554,10 @@ names the ambiguous function <code>return John</code> (in the list monad, <code>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen3</span> <span class="o">=</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen3</span> <span class="o">=</span> <span class="n">log</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">john</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1998,7 +1567,7 @@ names the ambiguous function <code>return John</code> (in the list monad, <code>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen3</span>
@@ -2111,7 +1680,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen3 :: forall (m :: * -> *). MonadPlus m => m Bool</span>
+</style><span class='get-type'>sen3 :: forall (m :: * -> *). MonadWriter String m => m Bool</span>
 </div>
 
 </div>
@@ -2122,10 +1691,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="n">sen3</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="n">sen3</span>
 </pre></div>
 
 </div>
@@ -2140,7 +1709,7 @@ Custom IHaskell CSS.
 
 
 <div class="output_text output_subarea ">
-<pre>[True,True]</pre>
+<pre>(False,&quot;Log Mary. Log John. &quot;)</pre>
 </div>
 
 </div>
@@ -2154,12 +1723,13 @@ Custom IHaskell CSS.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>As before, it is painless to combine this nondeterminism with other
-effects</p>
+<h2 id="Combining-Effects:-Or,-Look-Who's-Talking">Combining Effects: Or, Look Who's Talking<a class="anchor-link" href="#Combining-Effects:-Or,-Look-Who's-Talking">&#182;</a></h2><ul>
+<li><p>We <em>could</em> have implemented <code>me</code> and <code>log</code> directly in the reader and writer monads,
+respectively. But we instead took advantage of Haskell's monad classes <code>MonadReader</code>
+and <code>MonadWriter</code> using the more generic context-querying and context-writing functions
+<code>ask</code> and <code>writer</code>. Now we're ready for the payoff.</p>
 </li>
-<li><p>Here we'll write out the name of each individual that "someone" generates,
-in effect tagging each different thread of the computation.</p>
+<li><p>There is no obstacle to doing both of these things at the same time!</p>
 </li>
 </ul>
 
@@ -2168,10 +1738,10 @@ in effect tagging each different thread of the computation.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen4</span> <span class="o">=</span> <span class="n">log</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">john</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen4</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">me</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2181,7 +1751,7 @@ in effect tagging each different thread of the computation.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen4</span>
@@ -2294,7 +1864,438 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen4 :: forall (m :: * -> *). (MonadWriter String m, MonadPlus m) => m Bool</span>
+</style><span class='get-type'>sen4 :: forall (m :: * -> *). (MonadWriter String m, MonadReader Context m) => m Bool</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>As the type signature says, we just need a monad <code>m</code> that implements <em>both</em> the
+reader and writer interfaces</p>
+</li>
+<li><p>The simplest such monad is called <code>ReaderT Context (Writer String)</code>. In
+pseudo-Haskell, that looks like this:</p>
+<p>$\texttt{ReaderT}\,r\,(\texttt{Writer}\,w)\,a := r \to a \ast w$</p>
+<p>$
+\begin{align<em>}
+\texttt{return}\,x &amp;= \lambda r.\, \langle x,\,\emptyset\rangle\
+m \gg!= k &amp;= \lambda r.\, \langle y,\, w \diamond w'\rangle,\
+&amp;\hphantom{{}={}}\textsf{where }
+\langle x, w\rangle = m\,r\
+&amp;\hphantom{{}=\textsf{where }}\langle y, w'\rangle = k\,x\,r\
+\end{align</em>}
+$</p>
+</li>
+</ul>
+<ul>
+<li>To extract our results and effects from this type, we unwrap it in layers.
+(We'll try and make more sense out of this pattern later on when we get to
+monad transformers)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="p">(</span><span class="n">runReaderT</span> <span class="n">sen4</span> <span class="n">thisContext</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_text output_subarea ">
+<pre>(False,&quot;Log John. &quot;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Alternatives">Alternatives<a class="anchor-link" href="#Alternatives">&#182;</a></h2><ul>
+<li><p>To handle denotations that encode disjunction, we call on another standard
+interface class, <code>MonadPlus</code>, which subcategorizes for monads that implement
+something like a union operator</p>
+</li>
+<li><p>The generic operator is called <code>mplus</code>, and the canonical <code>MonadPlus</code> instance
+is the list monad. It implements <code>mplus</code>, unsurprisingly, as concatenation</p>
+<p>$\texttt{mplus} = \lambda m\lambda n.\, m +\!\!\!\!+\, n$</p>
+</li>
+</ul>
+<ul>
+<li>From there, it is easy to give a denotation for indefinite DPs in terms
+of this monadic disjunction</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">someone</span> <span class="p">::</span> <span class="n">MonadPlus</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span>
+<span class="n">someone</span> <span class="o">=</span> <span class="n">john</span> <span class="err">`</span><span class="n">mplus</span><span class="err">`</span> <span class="n">mary</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Remember that <code>john</code> here is the denotation of the name "John". It
+names the ambiguous function <code>return John</code> (in the list monad, <code>[John]</code>)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">sen5a</span> <span class="o">=</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen5a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<style>/*
+Custom IHaskell CSS.
+*/
+
+/* Styles used for the Hoogle display in the pager */
+.hoogle-doc {
+    display: block;
+    padding-bottom: 1.3em;
+    padding-left: 0.4em;
+}
+.hoogle-code {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+}
+.hoogle-text {
+    display: block;
+}
+.hoogle-name {
+    color: green;
+    font-weight: bold;
+}
+.hoogle-head {
+    font-weight: bold;
+}
+.hoogle-sub {
+    display: block;
+    margin-left: 0.4em;
+}
+.hoogle-package {
+    font-weight: bold;
+    font-style: italic;
+}
+.hoogle-module {
+    font-weight: bold;
+}
+.hoogle-class {
+    font-weight: bold;
+}
+
+/* Styles used for basic displays */
+.get-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    display: block;
+    white-space: pre-wrap;
+}
+
+.show-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    margin-left: 1em;
+}
+
+.mono {
+    font-family: monospace;
+    display: block;
+}
+
+.err-msg {
+    color: red;
+    font-style: italic;
+    font-family: monospace;
+    white-space: pre;
+    display: block;
+}
+
+#unshowable {
+    color: red;
+    font-weight: bold;
+}
+
+.err-msg.in.collapse {
+  padding-top: 0.7em;
+}
+
+/* Code that will get highlighted before it is highlighted */
+.highlight-code {
+    white-space: pre;
+    font-family: monospace;
+}
+
+/* Hlint styles */
+.suggestion-warning { 
+    font-weight: bold;
+    color: rgb(200, 130, 0);
+}
+.suggestion-error { 
+    font-weight: bold;
+    color: red;
+}
+.suggestion-name {
+    font-weight: bold;
+}
+</style><span class='get-type'>sen5a :: forall (m :: * -> *). MonadPlus m => m Bool</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="n">sen5a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_text output_subarea ">
+<pre>[True,True]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>As before, it is painless to combine this nondeterminism with other
+effects</p>
+</li>
+<li><p>Here we'll write out the name of each individual that "someone" generates,
+in effect tagging each different thread of the computation.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">sen5b</span> <span class="o">=</span> <span class="n">log</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">john</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen5b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<style>/*
+Custom IHaskell CSS.
+*/
+
+/* Styles used for the Hoogle display in the pager */
+.hoogle-doc {
+    display: block;
+    padding-bottom: 1.3em;
+    padding-left: 0.4em;
+}
+.hoogle-code {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+}
+.hoogle-text {
+    display: block;
+}
+.hoogle-name {
+    color: green;
+    font-weight: bold;
+}
+.hoogle-head {
+    font-weight: bold;
+}
+.hoogle-sub {
+    display: block;
+    margin-left: 0.4em;
+}
+.hoogle-package {
+    font-weight: bold;
+    font-style: italic;
+}
+.hoogle-module {
+    font-weight: bold;
+}
+.hoogle-class {
+    font-weight: bold;
+}
+
+/* Styles used for basic displays */
+.get-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    display: block;
+    white-space: pre-wrap;
+}
+
+.show-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    margin-left: 1em;
+}
+
+.mono {
+    font-family: monospace;
+    display: block;
+}
+
+.err-msg {
+    color: red;
+    font-style: italic;
+    font-family: monospace;
+    white-space: pre;
+    display: block;
+}
+
+#unshowable {
+    color: red;
+    font-weight: bold;
+}
+
+.err-msg.in.collapse {
+  padding-top: 0.7em;
+}
+
+/* Code that will get highlighted before it is highlighted */
+.highlight-code {
+    white-space: pre;
+    font-family: monospace;
+}
+
+/* Hlint styles */
+.suggestion-warning { 
+    font-weight: bold;
+    color: rgb(200, 130, 0);
+}
+.suggestion-error { 
+    font-weight: bold;
+    color: red;
+}
+.suggestion-name {
+    font-weight: bold;
+}
+</style><span class='get-type'>sen5b :: forall (m :: * -> *). (MonadWriter String m, MonadPlus m) => m Bool</span>
 </div>
 
 </div>
@@ -2314,8 +2315,8 @@ and disjunction interface. The simplest is called <code>WriterT w List</code>:</
 <p>$\texttt{WriterT}\,w\,\texttt{List}\,a := \texttt{List}\,(a \ast w)$</p>
 <p>$
 \begin{align<em>}
-\eta\,x &amp;= [ \langle x, \emptyset\rangle ]\
-m \star k &amp;=
+\texttt{return}\,x &amp;= [ \langle x, \emptyset\rangle ]\
+m \gg!= k &amp;=
 [%
   \langle y, w \diamond w'\rangle
 \mid
@@ -2334,10 +2335,10 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="n">sen4</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="n">sen5b</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2389,16 +2390,14 @@ to a couple of possible discourse states for testing</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="nb">type</span> <span class="n">Stack</span> <span class="o">=</span> <span class="n">List</span> <span class="n">E</span>
 
-<span class="n">discourseInitial</span> <span class="p">::</span> <span class="n">Stack</span>
+<span class="n">discourseInitial</span><span class="p">,</span> <span class="n">justMentionedMary</span> <span class="p">::</span> <span class="n">Stack</span>
 <span class="n">discourseInitial</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="n">justMentionedJohn</span> <span class="p">::</span> <span class="n">Stack</span>
-<span class="n">justMentionedJohn</span> <span class="o">=</span> <span class="p">[</span><span class="n">John</span><span class="p">]</span>
+<span class="n">justMentionedMary</span> <span class="o">=</span> <span class="p">[</span><span class="n">Mary</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2433,13 +2432,13 @@ the first (most recent) discourse referent from the state</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">pro</span> <span class="p">::</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span>
 <span class="n">pro</span> <span class="o">=</span> <span class="n">gets</span> <span class="n">head</span>
 
-<span class="n">sen6</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
+<span class="n">sen6a</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2449,11 +2448,11 @@ the first (most recent) discourse referent from the state</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen6</span> <span class="n">justMentionedJohn</span>
-<span class="o">--</span> <span class="n">justMentionedJohn</span> <span class="o">=</span> <span class="p">[</span><span class="n">John</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen6a</span> <span class="n">justMentionedMary</span>
+<span class="o">--</span> <span class="n">justMentionedMary</span> <span class="o">=</span> <span class="p">[</span><span class="n">Mary</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2468,7 +2467,7 @@ the first (most recent) discourse referent from the state</li>
 
 
 <div class="output_text output_subarea ">
-<pre>(False,[John])</pre>
+<pre>(True,[Mary])</pre>
 </div>
 
 </div>
@@ -2492,10 +2491,10 @@ results in presupposition failure</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen6</span> <span class="n">discourseInitial</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen6a</span> <span class="n">discourseInitial</span>
 <span class="o">--</span> <span class="n">discourseInitial</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 
@@ -2621,7 +2620,10 @@ Custom IHaskell CSS.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Of course, we can <em>modify</em> the discourse state as well as read it in</li>
+<li><p>Since it came up in class, here's a way to slip something like <code>Maybe</code> into something that's stateful</p>
+</li>
+<li><p><code>throwError</code> is a lot like <code>Nothing</code> except instead of encoding, well, nothing, it provides a little message</p>
+</li>
 </ul>
 
 </div>
@@ -2629,14 +2631,15 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">push</span> <span class="p">::</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="n">E</span>
-<span class="n">push</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> \<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="p">(</span>\<span class="n">s</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="p">))</span>
-    <span class="o">--</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> \<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">modify</span> <span class="p">(</span><span class="n">x</span><span class="p">:)</span> <span class="o">&gt;&gt;=</span> \<span class="n">_</span> <span class="k">return</span> <span class="n">x</span>
-
-<span class="n">sen7</span> <span class="o">=</span> <span class="n">push</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">proM</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadError</span> <span class="n">String</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span>
+<span class="n">proM</span> <span class="o">=</span> <span class="n">get</span> <span class="o">&gt;&gt;=</span> <span class="n">safeLookup</span>
+  <span class="n">where</span> <span class="n">safeLookup</span> <span class="n">s</span> <span class="o">=</span>
+          <span class="k">if</span> <span class="n">null</span> <span class="n">s</span>
+              <span class="n">then</span> <span class="n">throwError</span> <span class="s">&quot;Who are we talking about here?&quot;</span>
+              <span class="k">else</span> <span class="k">return</span> <span class="p">(</span><span class="n">head</span> <span class="n">s</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2646,10 +2649,23 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen7</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen6b</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">proM</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen6b</span>
 </pre></div>
 
 </div>
@@ -2759,7 +2775,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen7 :: forall (m :: * -> *). MonadState Stack m => m Bool</span>
+</style><span class='get-type'>sen6b :: forall (m :: * -> *). (MonadState Stack m, MonadError String m) => m Bool</span>
 </div>
 
 </div>
@@ -2767,13 +2783,47 @@ Custom IHaskell CSS.
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>A good monad to run this in is <code>ExceptT String (State Stack)</code></li>
+</ul>
+<p>$\texttt{ExceptT}\,e\,(\texttt{State}\,s)\,a := s \to (a|e) \ast w$</p>
+<p>$
+  \begin{align<em>}
+  \texttt{return}\,x &amp;= \lambda s.\, \langle \texttt{R}\,x, s\rangle \
+  m \gg!= k &amp;= \lambda s.\,
+    \begin{cases}
+      k\,x\,s' \quad &amp; \textbf{if } m\,s =
+                       \langle \texttt{R}\,x, s'\rangle \
+      m\,s           &amp; \textbf{if } m\,s =
+                       \langle \texttt{L}\,x, s'\rangle
+    \end{cases}
+  \end{align</em>}
+  $</p>
+<ul>
+<li><p>In this monad, <code>throwError</code> just "returns" a trivially dynamic
+thing whose value is failure</p>
+<p>$\texttt{throwError}\, e =
+ \texttt{return}\,(\texttt{L}\,e) =
+ \lambda s.\, \langle \texttt{L}\,e, s\rangle$</p>
+</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen7</span> <span class="n">justMentionedJohn</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="p">(</span><span class="n">runExceptT</span> <span class="n">sen6b</span><span class="p">)</span> <span class="n">justMentionedMary</span>
+<span class="n">runState</span> <span class="p">(</span><span class="n">runExceptT</span> <span class="n">sen6b</span><span class="p">)</span> <span class="n">discourseInitial</span>
 </pre></div>
 
 </div>
@@ -2788,7 +2838,198 @@ Custom IHaskell CSS.
 
 
 <div class="output_text output_subarea ">
-<pre>(True,[Mary,John])</pre>
+<pre>(Right True,[Mary])</pre>
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_text output_subarea ">
+<pre>(Left &quot;Who are we talking about here?&quot;,[])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Of course, we can <em>modify</em> the discourse state as well as read it in</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">push</span> <span class="p">::</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">E</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="n">E</span>
+<span class="n">push</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> \<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">state</span> <span class="p">(</span>\<span class="n">s</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="p">))</span>
+    <span class="o">--</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&gt;&gt;=</span> \<span class="n">x</span> <span class="o">-&gt;</span> <span class="n">modify</span> <span class="p">(</span><span class="n">x</span><span class="p">:)</span> <span class="o">&gt;&gt;=</span> \<span class="n">_</span> <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">sen7a</span> <span class="o">=</span> <span class="n">push</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen7a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<style>/*
+Custom IHaskell CSS.
+*/
+
+/* Styles used for the Hoogle display in the pager */
+.hoogle-doc {
+    display: block;
+    padding-bottom: 1.3em;
+    padding-left: 0.4em;
+}
+.hoogle-code {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+}
+.hoogle-text {
+    display: block;
+}
+.hoogle-name {
+    color: green;
+    font-weight: bold;
+}
+.hoogle-head {
+    font-weight: bold;
+}
+.hoogle-sub {
+    display: block;
+    margin-left: 0.4em;
+}
+.hoogle-package {
+    font-weight: bold;
+    font-style: italic;
+}
+.hoogle-module {
+    font-weight: bold;
+}
+.hoogle-class {
+    font-weight: bold;
+}
+
+/* Styles used for basic displays */
+.get-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    display: block;
+    white-space: pre-wrap;
+}
+
+.show-type {
+    color: green;
+    font-weight: bold;
+    font-family: monospace;
+    margin-left: 1em;
+}
+
+.mono {
+    font-family: monospace;
+    display: block;
+}
+
+.err-msg {
+    color: red;
+    font-style: italic;
+    font-family: monospace;
+    white-space: pre;
+    display: block;
+}
+
+#unshowable {
+    color: red;
+    font-weight: bold;
+}
+
+.err-msg.in.collapse {
+  padding-top: 0.7em;
+}
+
+/* Code that will get highlighted before it is highlighted */
+.highlight-code {
+    white-space: pre;
+    font-family: monospace;
+}
+
+/* Hlint styles */
+.suggestion-warning { 
+    font-weight: bold;
+    color: rgb(200, 130, 0);
+}
+.suggestion-error { 
+    font-weight: bold;
+    color: red;
+}
+.suggestion-name {
+    font-weight: bold;
+}
+</style><span class='get-type'>sen7a :: forall (m :: * -> *). MonadState Stack m => m Bool</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="n">sen7a</span> <span class="n">justMentionedMary</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_text output_subarea ">
+<pre>(True,[Mary,Mary])</pre>
 </div>
 
 </div>
@@ -2812,10 +3053,10 @@ store to see what values our lexical items are taking in context</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen65</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">pro</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen7b</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">pro</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2825,10 +3066,10 @@ store to see what values our lexical items are taking in context</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[120]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen65</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen7b</span>
 </pre></div>
 
 </div>
@@ -2938,7 +3179,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen65 :: forall (m :: * -> *). (MonadState Stack m, MonadWriter String m) => m Bool</span>
+</style><span class='get-type'>sen7b :: forall (m :: * -> *). (MonadState Stack m, MonadWriter String m) => m Bool</span>
 </div>
 
 </div>
@@ -2949,10 +3190,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="p">(</span><span class="n">runStateT</span> <span class="n">sen65</span> <span class="n">justMentionedJohn</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runWriter</span> <span class="p">(</span><span class="n">runStateT</span> <span class="n">sen7b</span> <span class="n">justMentionedMary</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2967,7 +3208,7 @@ Custom IHaskell CSS.
 
 
 <div class="output_text output_subarea ">
-<pre>((False,[John]),&quot;Log John. &quot;)</pre>
+<pre>((True,[Mary]),&quot;Log Mary. &quot;)</pre>
 </div>
 
 </div>
@@ -3009,10 +3250,10 @@ trades in two types of effects: state-manipulation and nondeterminism. Let's try
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[121]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen8</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen8a</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">pro</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3022,10 +3263,10 @@ trades in two types of effects: state-manipulation and nondeterminism. Let's try
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen8</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen8a</span>
 </pre></div>
 
 </div>
@@ -3135,7 +3376,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen8 :: forall (m :: * -> *). (MonadState Stack m, MonadPlus m) => m Bool</span>
+</style><span class='get-type'>sen8a :: forall (m :: * -> *). (MonadState Stack m, MonadPlus m) => m Bool</span>
 </div>
 
 </div>
@@ -3158,8 +3399,8 @@ disjunctive interfaces. Here's the prototype:</p>
 <p>$\texttt{StateT}\,s\,\texttt{List}\,a := s \to \texttt{List}\,(a \ast s)$</p>
 <p>$
 \begin{align<em>}
-\eta\,x &amp;= \lambda s.\, [ \langle x, s\rangle ]\
-m \star k &amp;= \lambda s.\,
+\texttt{return}\,x &amp;= \lambda s.\, [ \langle x, s\rangle ]\
+m \gg!= k &amp;= \lambda s.\,
 [%
   \langle y, s''\rangle
 \mid
@@ -3175,10 +3416,10 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[123]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runStateT</span> <span class="n">sen8</span> <span class="n">discourseInitial</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runStateT</span> <span class="n">sen8a</span> <span class="n">discourseInitial</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3216,10 +3457,10 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[125]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen9</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">pro</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen8b</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">pro</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3229,10 +3470,10 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen9</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen8b</span>
 </pre></div>
 
 </div>
@@ -3342,7 +3583,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen9 :: forall (m :: * -> *). (MonadState Stack m, MonadWriter String m, MonadPlus m) => m Bool</span>
+</style><span class='get-type'>sen8b :: forall (m :: * -> *). (MonadState Stack m, MonadWriter String m, MonadPlus m) => m Bool</span>
 </div>
 
 </div>
@@ -3353,10 +3594,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runRWST</span> <span class="n">sen9</span> <span class="n">thisContext</span> <span class="n">discourseInitial</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runRWST</span> <span class="n">sen8b</span> <span class="n">thisContext</span> <span class="n">discourseInitial</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3395,11 +3636,11 @@ which we can layer over nondeterministic output</p>
   r \to s \to \texttt{List}\,(a \ast s \ast w)$</p>
 <p>$
 \begin{align<em>}
-\eta\,x &amp;= \lambda r\lambda s.\,
+\texttt{return}\,x &amp;= \lambda r\lambda s.\,
 \big[%
   \langle x, s, \emptyset\rangle
 \big]\
-m \star k &amp;= \lambda r\lambda s.\,
+m \gg!= k &amp;= \lambda r\lambda s.\,
 \big[%
   \langle y, s'', w \diamond w'\rangle
 \mid
@@ -3415,11 +3656,11 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[105]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen10</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadRWS</span> <span class="n">Context</span> <span class="n">String</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">Bool</span>
-<span class="n">sen10</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">me</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen8c</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadRWS</span> <span class="n">Context</span> <span class="n">String</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">m</span> <span class="n">Bool</span>
+<span class="n">sen8c</span> <span class="o">=</span> <span class="n">push</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">me</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3429,10 +3670,10 @@ $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runRWST</span> <span class="n">sen10</span> <span class="n">thisContext</span> <span class="n">discourseInitial</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runRWST</span> <span class="n">sen8c</span> <span class="n">thisContext</span> <span class="n">discourseInitial</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3474,13 +3715,20 @@ values that that trace may assume</p>
 around like state, effectively bringing everything into surface order scope</p>
 </li>
 </ul>
+<p>$\texttt{ContT}\,\,r\,\,m\,a := (a \to m\,r) \to m\,r$</p>
+<p>$
+  \begin{align<em>}
+  \texttt{return}\,x &amp;= \lambda k.\, k\,x \
+  m \gg!= f &amp;= \lambda k.\, m\,(\lambda x.\, f\,x\,k)
+  \end{align</em>}
+  $</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">everyone</span> <span class="p">::</span> <span class="n">Monad</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">E</span>
@@ -3498,10 +3746,10 @@ around like state, effectively bringing everything into surface order scope</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[131]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen11</span> <span class="o">=</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen9a</span> <span class="o">=</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3511,10 +3759,10 @@ around like state, effectively bringing everything into surface order scope</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen11</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen9a</span>
 </pre></div>
 
 </div>
@@ -3624,7 +3872,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen11 :: forall (m :: * -> *). Monad m => ContT Bool m Bool</span>
+</style><span class='get-type'>sen9a :: forall (m :: * -> *). Monad m => ContT Bool m Bool</span>
 </div>
 
 </div>
@@ -3635,10 +3883,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[133]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen11</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen9a</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3664,10 +3912,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen111</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">everyone</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen9b</span> <span class="o">=</span> <span class="n">mary</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">everyone</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3677,10 +3925,10 @@ Custom IHaskell CSS.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[111]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen111</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">:</span><span class="nb">type</span> <span class="n">sen9b</span>
 </pre></div>
 
 </div>
@@ -3790,7 +4038,7 @@ Custom IHaskell CSS.
 .suggestion-name {
     font-weight: bold;
 }
-</style><span class='get-type'>sen111 :: forall (m :: * -> *). Monad m => ContT Bool m Bool</span>
+</style><span class='get-type'>sen9b :: forall (m :: * -> *). Monad m => ContT Bool m Bool</span>
 </div>
 
 </div>
@@ -3824,10 +4072,10 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen111</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runIdentity</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen9b</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3862,11 +4110,11 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[134]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen12</span> <span class="p">::</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
-<span class="n">sen12</span> <span class="o">=</span>  <span class="n">push</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen10a</span> <span class="p">::</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
+<span class="n">sen10a</span> <span class="o">=</span>  <span class="n">push</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">mary</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3876,10 +4124,10 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[135]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen12</span><span class="p">)</span> <span class="n">discourseInitial</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runState</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen10a</span><span class="p">)</span> <span class="n">discourseInitial</span>
 </pre></div>
 
 </div>
@@ -3905,11 +4153,11 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen13</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
-<span class="n">sen13</span> <span class="o">=</span> <span class="n">log</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">push</span> <span class="n">everyone</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen10b</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
+<span class="n">sen10b</span> <span class="o">=</span> <span class="n">log</span> <span class="n">someone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">push</span> <span class="n">everyone</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3919,10 +4167,10 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="p">(</span><span class="n">runStateT</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen13</span><span class="p">)</span> <span class="n">discourseInitial</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="p">(</span><span class="n">runStateT</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen10b</span><span class="p">)</span> <span class="n">discourseInitial</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -3948,11 +4196,11 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">sen14</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
-<span class="n">sen14</span> <span class="o">=</span> <span class="n">push</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">someone</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">sen10c</span> <span class="p">::</span> <span class="p">(</span><span class="n">MonadPlus</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadState</span> <span class="n">Stack</span> <span class="n">m</span><span class="p">,</span> <span class="n">MonadWriter</span> <span class="n">String</span> <span class="n">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">ContT</span> <span class="n">Bool</span> <span class="n">m</span> <span class="n">Bool</span>
+<span class="n">sen10c</span> <span class="o">=</span> <span class="n">push</span> <span class="n">everyone</span> <span class="o">&lt;</span>\<span class="o">&gt;</span> <span class="p">(</span><span class="n">likes</span> <span class="o">&lt;/&gt;</span> <span class="n">log</span> <span class="n">someone</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3962,10 +4210,10 @@ applicative combinators scope everything into place:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[139]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="p">(</span><span class="n">runStateT</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen14</span><span class="p">)</span> <span class="n">discourseInitial</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">runList</span> <span class="p">(</span><span class="n">runWriterT</span> <span class="p">(</span><span class="n">runStateT</span> <span class="p">(</span><span class="n">lower</span> <span class="n">sen10c</span><span class="p">)</span> <span class="n">discourseInitial</span><span class="p">))</span>
 </pre></div>
 
 </div>
