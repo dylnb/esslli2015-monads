@@ -1,6 +1,8 @@
-# Building An Effectful Fragment, Modularly
+Building An Effectful Fragment, Modularly
+=========================================
 
-## Setting things up
+Setting things up
+-----------------
 
 * First we need to bring the monad instances into scope
 * These instances contain the definitions of `return` and `bind` for the various notions of "effect" that we'll be considering
@@ -9,13 +11,14 @@
 > 
 > import Prelude hiding (log)
 > import Control.Monad.Identity
-> import Control.Monad.List
+> import Control.Monad.Except
 > import Control.Monad.Reader
 > import Control.Monad.Writer
+> import Control.Monad.List
 > import Control.Monad.State
 > import Control.Monad.RWS
 > import Control.Monad.Cont
-> :load DemoUtils
+> import DemoUtils
 
 
 * Then we need to define the types we'll need for denotations, and set up a model
@@ -42,7 +45,11 @@
 
 
 * And that's it for the model theory. Onto the language!
-## Lexicon
+
+
+Lexicon
+-------
+
 * The lexicon is basically trivial: names and predicates are directly referential
   ("john" means `John`; "likes" means `likes'`, etc.)
 
@@ -67,27 +74,28 @@
 * We can specify it later at any point, and the Haskell type-inference engine will
   resolve the ambiguous computation according to the relevant definition:
 
-> print (john :: Identity E)
-> print (john :: Pair E)
-> print (john :: List E)
+> -- print (john :: Identity E)
+> -- print (john :: Pair E)
+> -- print (john :: List E)
 
 
 * For convenience, we can also exploit a family of "run" commands,
   which are basically identity functions with specialized types that effectively
   force the interpreter's hand in disambiguating a monad
 
-> :type runIdentity
-> :type runPair
-> :type runList
+> -- :type runIdentity
+> -- :type runPair
+> -- :type runList
 
 
 
-> runIdentity john
-> runPair john
-> runList john
+> -- runIdentity john
+> -- runPair john
+> -- runList john
 
 
-## Grammar: Monadic Application
+Grammar: Monadic Application
+----------------------------
 
 * Here we lift forward and backward function application through an arbitrary monad
 
@@ -115,22 +123,21 @@
 >                 return (f x)
 
 
-## Making Sentences
+Making Sentences
+----------------
+
 * With these slashes as our "modes of composition", we build the meanings of sentences
   up in the usual type-driven way; that is, we choose the slash that makes the type fit
 
-> sen1 = john <\> (likes </> mary)
-> sen2 = mary <\> (likes </> john)
+> sen1a, sen1b :: Monad m => m Bool
+> sen1a = john <\> (likes </> mary)
+> sen1b = mary <\> (likes </> john)
 
 
 * Notice that Haskell is actually inferring the types of the larger constituents,
   based on the types of the parts and the mode of composition
 
-> :type sen1
-> :type sen2
-
-
-* So at this point `sen1` and `sen2` are monad-neutral
+* So at this point `sen1a` and `sen1b` are monad-neutral
 
 * They represent computations that first extract a value from the denotation of their
   subject, then a value from that of the predicate, and then one from the object, in
@@ -142,16 +149,18 @@
   
 * To inspect the result, we need only specify what monad we want to see it in
 
-> runIdentity sen1
-> runIdentity sen2
+> -- runIdentity sen1a
+> -- runIdentity sen1b
 
 
 
-> runPair sen1
-> runList sen1
+> -- runPair sen1a
+> -- runList sen1a
 
 
-## Adding An Effect: Context-Sensitivity
+Adding An Effect: Context-Sensitivity
+-------------------------------------
+
 * To model context-sensitive language, we'll first need to specify some representation
   of context
   
@@ -192,19 +201,15 @@
   just slides through the computation until it hits the piece of the sentence that needs
   it
 
-> sen5 = mary <\> (likes </> me)
+> sen2 :: MonadReader Context m => m Bool
+> sen2 = mary <\> (likes </> me)
 
-
-
-> :type sen5
-
-
-
-> runReader sen5 thisContext
+> -- runReader sen2 thisContext
 > -- thisContext = {speaker = John, time = 0}
 
 
-## Another Effect: Logging
+Another Effect: Logging
+-----------------------
 
 * The flipside of context-sensitivity is context-generativity. Some lexical items seem to
   contribute content in a separate "dimension" of meaning, like the apposatives and 
@@ -237,18 +242,14 @@
 * And that's it. We can now log nodes in the computation to inspect their values without
   mucking up any of the combinatorics
 
-> sen2 = log mary <\> (likes </> log john)
+> sen3 :: MonadWriter String m => m Bool
+> sen3 = log mary <\> (likes </> log john)
+
+> -- runWriter sen3
 
 
-
-> :type sen2
-
-
-
-> runWriter sen2
-
-
-## Combining Effects: Or, Look Who's Talking
+Combining Effects: Or, Look Who's Talking
+-----------------------------------------
 
 * We *could* have implemented `me` and `log` directly in the reader and writer monads,
   respectively. But we instead took advantage of Haskell's monad classes `MonadReader`
@@ -257,11 +258,8 @@
   
 * There is no obstacle to doing both of these things at the same time!
 
-> senBlah = mary <\> (likes </> log me)
-
-
-
-> :type senBlah
+> sen4 :: (MonadReader Context m, MonadWriter String m) => m Bool
+> sen4 = mary <\> (likes </> log me)
 
 
 * As the type signature says, we just need a monad `m` that implements *both* the
@@ -274,8 +272,8 @@
   
   $
   \begin{align*}
-  \eta\,x &= \lambda r.\, \langle x,\,\emptyset\rangle\\
-  m \star k &= \lambda r.\, \langle y,\, w \diamond w'\rangle,\\
+  \texttt{return}\,x &= \lambda r.\, \langle x,\,\emptyset\rangle\\
+  m \gg\!= k &= \lambda r.\, \langle y,\, w \diamond w'\rangle,\\
   &\hphantom{{}={}}\textsf{where }
   \langle x, w\rangle = m\,r\\
   &\hphantom{{}=\textsf{where }}\langle y, w'\rangle = k\,x\,r\\
@@ -288,10 +286,11 @@
   monad transformers)
 
 
-> runWriter (runReaderT senBlah thisContext)
+> -- runWriter (runReaderT sen4 thisContext)
 
 
-## Alternatives (aka the List monad)
+Alternatives
+------------
 
 * To handle denotations that encode disjunction, we call on another standard
   interface class, `MonadPlus`, which subcategorizes for monads that implement
@@ -313,15 +312,10 @@
 * Remember that `john` here is the denotation of the name "John". It
   names the ambiguous function `return John` (in the list monad, `[John]`)
 
-> sen3 = someone <\> (likes </> mary)
+> sen5a :: MonadPlus m => m Bool
+> sen5a = someone <\> (likes </> mary)
 
-
-
-> :type sen3
-
-
-
-> runList sen3
+> -- runList sen5a
 
 
 * As before, it is painless to combine this nondeterminism with other
@@ -330,11 +324,8 @@
 * Here we'll write out the name of each individual that "someone" generates,
   in effect tagging each different thread of the computation.
 
-> sen4 = log someone <\> (likes </> john)
-
-
-
-> :type sen4
+> sen5b :: (MonadPlus m, MonadWriter String m) => m Bool
+> sen5b = log someone <\> (likes </> john)
 
 
 * To execute this program, we need a monad that implements both the writer
@@ -344,8 +335,8 @@
   
   $
   \begin{align*}
-  \eta\,x &= [ \langle x, \emptyset\rangle ]\\
-  m \star k &=
+  \texttt{return}\,x &= [ \langle x, \emptyset\rangle ]\\
+  m \gg\!= k &=
   [%
     \langle y, w \diamond w'\rangle
   \mid
@@ -357,10 +348,12 @@
   
 * Again, we unwrap this in layers
 
-> runList (runWriterT sen4)
+> -- runList (runWriterT sen5b)
 
 
-## Anaphora
+Anaphora
+--------
+
 * The strategy by now is familiar; introducing and picking up discourse referents is
   a side effect of evaluation
   
@@ -369,11 +362,9 @@
 
 > type Stack = List E
 > 
-> discourseInitial :: Stack
+> discourseInitial, justMentionedMary :: Stack
 > discourseInitial = []
-> 
-> justMentionedJohn :: Stack
-> justMentionedJohn = [John]
+> justMentionedMary = [Mary]
 
 
 * Then we define the dynamic-sensitive operations
@@ -395,19 +386,66 @@
 > pro :: MonadState Stack m => m E
 > pro = gets head
 > 
-> sen6 = mary <\> (likes </> pro)
+> sen6a :: MonadState Stack m => m Bool
+> sen6a = mary <\> (likes </> pro)
 
 
-
-> runState sen6 justMentionedJohn
-> -- justMentionedJohn = [John]
+> -- runState sen6a justMentionedMary
+> -- justMentionedMary = [Mary]
 
 
 * Running the sentence in a discourse without any obvious shared referents
   results in presupposition failure
 
-> runState sen6 discourseInitial
+> -- runState sen6a discourseInitial
 > -- discourseInitial = []
+
+
+* Since it came up in class, here's a way to slip something like `Maybe` into something that's stateful
+
+* `throwError` is a lot like `Nothing` except instead of encoding, well, nothing, it provides a little message
+
+> proM :: (MonadError String m, MonadState Stack m) => m E
+> proM = get >>= safeLookup
+>   where safeLookup s =
+>           if null s
+>               then throwError "Who are we talking about here?"
+>               else return (head s)
+
+
+
+> sen6b :: (MonadError String m, MonadState Stack m) => m Bool
+> sen6b = mary <\> (likes </> proM)
+
+
+* A good monad to run this in is `ExceptT String (State Stack)`
+
+
+  $\texttt{ExceptT}\,e\,(\texttt{State}\,s)\,a := s \to (a|e) \ast w$
+  
+  $
+  \begin{align*}
+  \texttt{return}\,x &= \lambda s.\, \langle \texttt{R}\,x, s\rangle \\
+  m \gg\!= k &= \lambda s.\,
+    \begin{cases}
+      k\,x\,s' \quad & \textbf{if } m\,s =
+                       \langle \texttt{R}\,x, s'\rangle \\
+      m\,s           & \textbf{if } m\,s =
+                       \langle \texttt{L}\,x, s'\rangle
+    \end{cases}
+  \end{align*}
+  $
+
+
+* In this monad, `throwError` just "returns" a trivially dynamic
+  thing whose value is failure
+
+  $\texttt{throwError}\, e =
+   \texttt{return}\,(\texttt{L}\,e) =
+   \lambda s.\, \langle \texttt{L}\,e, s\rangle$
+
+> -- runState (runExceptT sen6b) justMentionedMary
+> -- runState (runExceptT sen6b) discourseInitial
 
 
 * Of course, we can *modify* the discourse state as well as read it in
@@ -416,32 +454,24 @@
 > push m = m >>= \x -> state (\s -> (x, x:s))
 >     -- = m >>= \x -> modify (x:) >>= \_ return x
 > 
-> sen7 = push mary <\> (likes </> pro)
+> sen7a :: MonadState Stack m => m Bool
+> sen7a = push mary <\> (likes </> pro)
 
-
-
-> :type sen7
-
-
-
-> runState sen7 justMentionedJohn
+> -- runState sen7a justMentionedMary
 
 
 * And as usual, we can log out any component of the sentence to an independent
   store to see what values our lexical items are taking in context
 
-> sen65 = mary <\> (likes </> log pro)
+> sen7b :: (MonadState Stack m, MonadWriter String m) => m Bool
+> sen7b = mary <\> (likes </> log pro)
+
+> -- runWriter (runStateT sen7b justMentionedMary)
 
 
+Dynamic Semantics: Alternatives + Anaphora
+------------------------------------------
 
-> :type sen65
-
-
-
-> runWriter (runStateT sen65 justMentionedJohn)
-
-
-## Dynamic Semantics: Alternatives + Anaphora
 * Natural language "dynamic semantics" comes in a few different flavors, one of which
   treats sentence meanings as relations between discourse states
   $:: \texttt{List}\,(s \ast s) \quad = \quad s \to \texttt{List}\, s$
@@ -453,11 +483,8 @@
 * This suggests that what we really need to model dynamic phenomena is a monad that
   trades in two types of effects: state-manipulation and nondeterminism. Let's try it.
 
-> sen8 = push someone <\> (likes </> pro)
-
-
-
-> :type sen8
+> sen8a :: (MonadState Stack m, MonadPlus m) => m Bool
+> sen8a = push someone <\> (likes </> pro)
 
 
 * Indeed, we see that we can already apply operations from our growing fragment
@@ -470,8 +497,8 @@
   
   $
   \begin{align*}
-  \eta\,x &= \lambda s.\, [ \langle x, s\rangle ]\\
-  m \star k &= \lambda s.\,
+  \texttt{return}\,x &= \lambda s.\, [ \langle x, s\rangle ]\\
+  m \gg\!= k &= \lambda s.\,
   [%
     \langle y, s''\rangle
   \mid
@@ -480,20 +507,15 @@
   \end{align*}
   $
 
-> runList (runStateT sen8 discourseInitial)
+> -- runList (runStateT sen8a discourseInitial)
 
 
 * Checking to make sure we're really binding that pronoun
 
-> sen9 = push someone <\> (likes </> log pro)
+> sen8b :: (MonadState Stack m, MonadPlus m, MonadWriter String m) => m Bool
+> sen8b = push someone <\> (likes </> log pro)
 
-
-
-> :type sen9
-
-
-
-> runList (runRWST sen9 thisContext discourseInitial)
+> -- runList (runRWST sen8b thisContext discourseInitial)
 
 
 * Adding back in the indexicals, just for the hell of it
@@ -507,11 +529,11 @@
   
   $
   \begin{align*}
-  \eta\,x &= \lambda r\lambda s.\,
+  \texttt{return}\,x &= \lambda r\lambda s.\,
   \big[%
     \langle x, s, \emptyset\rangle
   \big]\\
-  m \star k &= \lambda r\lambda s.\,
+  m \gg\!= k &= \lambda r\lambda s.\,
   \big[%
     \langle y, s'', w \diamond w'\rangle
   \mid
@@ -520,15 +542,16 @@
   \end{align*}
   $
 
-> sen10 :: (MonadPlus m, MonadRWS Context String Stack m) => m Bool
-> sen10 = push someone <\> (likes </> log me)
+> sen8c :: (MonadPlus m, MonadRWS Context String Stack m) => m Bool
+> sen8c = push someone <\> (likes </> log me)
 
 
 
-> runList (runRWST sen10 thisContext discourseInitial)
+> -- runList (runRWST sen8c thisContext discourseInitial)
 
 
-## Quantification As Side Effect
+Quantification As Side Effect
+-----------------------------
 
 * This one is cool. It's possible to think about every lexical item as contributing
   a "local" value of some basic functional or argumental type, something that
@@ -540,6 +563,16 @@
   
 * That control-manipulation is modeled by the continuation monad, which passes traces
   around like state, effectively bringing everything into surface order scope
+  
+
+  $\texttt{ContT}\,\,r\,\,m\,a := (a \to m\,r) \to m\,r$
+  
+  $
+  \begin{align*}
+  \texttt{return}\,x &= \lambda k.\, k\,x \\
+  m \gg\!= f &= \lambda k.\, m\,(\lambda x.\, f\,x\,k)
+  \end{align*}
+  $
 
 > everyone :: Monad m => ContT Bool m E
 > everyone = ContT (\k -> k John `andM` k Mary)
@@ -550,23 +583,15 @@
 
 
 
-> sen11 = everyone <\> (likes </> mary)
+> sen9a :: Monad m => ContT Bool m Bool
+> sen9a = everyone <\> (likes </> mary)
+
+> -- runIdentity (lower sen9a)
 
 
 
-> :type sen11
-
-
-
-> runIdentity (lower sen11)
-
-
-
-> sen111 = mary <\> (likes </> everyone)
-
-
-
-> :type sen111
+> sen9b :: Monad m => ContT Bool m Bool
+> sen9b = mary <\> (likes </> everyone)
 
 
 * Notice no need for anything like syntactic QR. The continuation's `return`
@@ -580,34 +605,35 @@
         f\,y\,x)))
   $$
 
-> runIdentity (lower sen111)
+> -- runIdentity (lower sen9b)
 
 
-## Putting It All Together
+Putting It All Together
+-----------------------
 
-> sen12 :: MonadState Stack m => ContT Bool m Bool
-> sen12 =  push everyone <\> (likes </> mary)
-
-
-
-> runState (lower sen12) discourseInitial
+> sen10a :: MonadState Stack m => ContT Bool m Bool
+> sen10a =  push everyone <\> (likes </> mary)
 
 
 
-> sen13 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
-> sen13 = log someone <\> (likes </> push everyone)
+> -- runState (lower sen10a) discourseInitial
 
 
 
-> runList (runWriterT (runStateT (lower sen13) discourseInitial))
+> sen10b :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
+> sen10b = log someone <\> (likes </> push everyone)
 
 
 
-> sen14 :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
-> sen14 = push everyone <\> (likes </> log someone)
+> -- runList (runWriterT (runStateT (lower sen10b) discourseInitial))
 
 
 
-> runList (runWriterT (runStateT (lower sen14) discourseInitial))
+> sen10c :: (MonadPlus m, MonadState Stack m, MonadWriter String m) => ContT Bool m Bool
+> sen10c = push everyone <\> (likes </> log someone)
+
+
+
+> -- runList (runWriterT (runStateT (lower sen10c) discourseInitial))
 
 
