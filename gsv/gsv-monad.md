@@ -36,7 +36,7 @@
   quite capture the modal dynamicity at the heart of the V part of GSV.
 
 * You can see that the entry for `◊φ` has no access to the modal state of play
-  prior to its evaluation. The only thing it reads in is $g$, the current,
+  prior to its evaluation. The only thing it reads in is `g`, the current,
   local state of how discourse referents are allocated to variables. So there
   will be no way for previous information about what the set of current
   *possibilities* is like to influence the denotation of `◊φ`. In particular,

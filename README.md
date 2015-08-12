@@ -91,8 +91,7 @@ background on Haskell.
     * Combining effects
         * Dynamic semantics
       * Monad transformers
-      * Applicatives
+      * Demo
 
-* Day 5:
-    * Continuations for scope
-    * Continuations and monads
+* Day 5: Guest lecture from Simon Charlow
+    * Monads, applicative functors, and scope
